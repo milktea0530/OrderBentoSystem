@@ -71,6 +71,42 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_FoodMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_FoodMenu.Designer.cs">
+      <DependentUpon>Form_FoodMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Menu.Designer.cs">
+      <DependentUpon>Form_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_OnDuty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_OnDuty.Designer.cs">
+      <DependentUpon>Form_OnDuty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_OrderDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_OrderDetail.Designer.cs">
+      <DependentUpon>Form_OrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Restaurant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Restaurant.Designer.cs">
+      <DependentUpon>Form_Restaurant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Student.Designer.cs">
+      <DependentUpon>Form_Student.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderBentoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +126,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderBentoSystemDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Order.Designer.cs">
+      <DependentUpon>Form_Order.cs</DependentUpon>
     </Compile>
     <Compile Include="Orders.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
@@ -120,6 +162,30 @@
     <Compile Include="StudentInfo.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_FoodMenu.resx">
+      <DependentUpon>Form_FoodMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Menu.resx">
+      <DependentUpon>Form_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_OnDuty.resx">
+      <DependentUpon>Form_OnDuty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Order.resx">
+      <DependentUpon>Form_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_OrderDetail.resx">
+      <DependentUpon>Form_OrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Restaurant.resx">
+      <DependentUpon>Form_Restaurant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Student.resx">
+      <DependentUpon>Form_Student.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
