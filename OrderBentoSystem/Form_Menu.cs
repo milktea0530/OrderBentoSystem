@@ -46,5 +46,17 @@ namespace OrderBentoSystem
             Form_Restaurant f_rest = new Form_Restaurant();
             f_rest.ShowDialog(this);
         }
+
+        private void 菜單資料ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_FoodMenu f_foodMenu = new Form_FoodMenu();
+            f_foodMenu.ShowDialog(this);
+        }
+
+        private void 加購項目維護ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Additional f_add = new Form_Additional();
+            f_add.ShowDialog(this);
+        }
     }
 }

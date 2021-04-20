@@ -33,6 +33,9 @@ namespace OrderBentoSystem
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<StudentInfo> StudentInfo { get; set; }
+        public virtual DbSet<OnDutyInfo> OnDutyInfo { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
+        public virtual DbSet<Sys_Account> Sys_Account { get; set; }
     
         public virtual ObjectResult<Proc_GetAdditional_Result> Proc_GetAdditional(string a_Code)
         {

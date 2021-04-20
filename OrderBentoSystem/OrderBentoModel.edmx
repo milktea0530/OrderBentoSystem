@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OrderBentoSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OrderBentoSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Additional">
           <Key>
             <PropertyRef Name="Add_Code" />
@@ -31,24 +31,30 @@
           <Property Name="F_Price" Type="decimal" Precision="6" Scale="2" />
           <Property Name="Add_Code" Type="varchar" MaxLength="5" />
         </EntityType>
-        <!--產生期間發現錯誤:
-警告 6013: 資料表/檢視 'OrderBentoSystem.dbo.OnDutyInfo' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
         <EntityType Name="OnDutyInfo">
-          <Property Name="S_Code" Type="varchar" MaxLength="10" />
-          <Property Name="OnDuty_Date" Type="datetime" />
+          <Key>
+            <PropertyRef Name="S_Code" />
+            <PropertyRef Name="OnDuty_Date" />
+          </Key>
+          <Property Name="S_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="OnDuty_Date" Type="datetime" Nullable="false" />
           <Property Name="C_Code" Type="varchar" MaxLength="5" />
-        </EntityType>-->
-        <!--產生期間發現錯誤:
-警告 6013: 資料表/檢視 'OrderBentoSystem.dbo.OrderDetail' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
+        </EntityType>
         <EntityType Name="OrderDetail">
-          <Property Name="O_Number" Type="varchar" MaxLength="20" />
-          <Property Name="F_Code" Type="varchar" MaxLength="10" />
+          <Key>
+            <PropertyRef Name="O_Number" />
+            <PropertyRef Name="S_Code" />
+            <PropertyRef Name="F_Code" />
+          </Key>
+          <Property Name="O_Number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="S_Code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="F_Code" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Price" Type="decimal" Precision="6" Scale="2" />
           <Property Name="Subtotal" Type="decimal" Precision="6" Scale="2" />
           <Property Name="Add_Code" Type="varchar" MaxLength="30" />
           <Property Name="AlreadyPaid" Type="tinyint" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="O_Number" />
@@ -81,13 +87,15 @@
           <Property Name="Phone" Type="varchar" MaxLength="15" />
           <Property Name="Addr" Type="varchar" MaxLength="30" />
         </EntityType>
-        <!--產生期間發現錯誤:
-警告 6013: 資料表/檢視 'OrderBentoSystem.dbo.Sys_Account' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
         <EntityType Name="Sys_Account">
-          <Property Name="Account" Type="varchar" MaxLength="20" />
-          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Key>
+            <PropertyRef Name="Account" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Account" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="10" />
-        </EntityType>-->
+        </EntityType>
         <Function Name="Proc_GetAdditional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="A_Code" Type="varchar" Mode="In" />
         </Function>
@@ -112,20 +120,53 @@
           <EntitySet Name="Additional" EntityType="Self.Additional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClassInfo" EntityType="Self.ClassInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OnDutyInfo" EntityType="Self.OnDutyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Account" EntityType="Self.Sys_Account" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OrderBentoSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OrderBentoSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Additional" EntityType="OrderBentoSystemModel.Additional" />
+          <EntitySet Name="ClassInfo" EntityType="OrderBentoSystemModel.ClassInfo" />
+          <EntitySet Name="Food" EntityType="OrderBentoSystemModel.Food" />
+          <EntitySet Name="Orders" EntityType="OrderBentoSystemModel.Orders" />
+          <EntitySet Name="Restaurant" EntityType="OrderBentoSystemModel.Restaurant" />
+          <EntitySet Name="StudentInfo" EntityType="OrderBentoSystemModel.StudentInfo" />
+          <FunctionImport Name="Proc_GetAdditional" ReturnType="Collection(OrderBentoSystemModel.Proc_GetAdditional_Result)">
+          <Parameter Name="A_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_GetClass" ReturnType="Collection(OrderBentoSystemModel.Proc_GetClass_Result)">
+          <Parameter Name="C_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_GetFood" ReturnType="Collection(OrderBentoSystemModel.Proc_GetFood_Result)">
+          <Parameter Name="R_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_GetOnDuty" ReturnType="Collection(OrderBentoSystemModel.Proc_GetOnDuty_Result)">
+            <Parameter Name="C_Code" Mode="In" Type="String" />
+            <Parameter Name="S_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_GetRestaurant" ReturnType="Collection(OrderBentoSystemModel.Proc_GetRestaurant_Result)">
+          <Parameter Name="R_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_GetStudent" ReturnType="Collection(OrderBentoSystemModel.Proc_GetStudent_Result)">
+            <Parameter Name="C_Code" Mode="In" Type="String" />
+            <Parameter Name="S_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="OnDutyInfo" EntityType="OrderBentoSystemModel.OnDutyInfo" />
+          <EntitySet Name="OrderDetail" EntityType="OrderBentoSystemModel.OrderDetail" />
+          <EntitySet Name="Sys_Account" EntityType="OrderBentoSystemModel.Sys_Account" />
+        </EntityContainer>
         <EntityType Name="Additional">
           <Key>
             <PropertyRef Name="Add_Code" />
           </Key>
-          <Property Name="Add_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Add_Code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Add_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Res_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Add_Price" Type="Decimal" Precision="6" Scale="2" />
@@ -134,14 +175,14 @@
           <Key>
             <PropertyRef Name="C_Code" />
           </Key>
-          <Property Name="C_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="C_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Food">
           <Key>
             <PropertyRef Name="F_Code" />
           </Key>
-          <Property Name="F_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="F_Code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="F_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Res_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="F_Price" Type="Decimal" Precision="6" Scale="2" />
@@ -151,7 +192,7 @@
           <Key>
             <PropertyRef Name="O_Number" />
           </Key>
-          <Property Name="O_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="O_Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="C_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="OnDuty" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="O_Date" Type="DateTime" Precision="3" />
@@ -162,7 +203,7 @@
           <Key>
             <PropertyRef Name="Res_Code" />
           </Key>
-          <Property Name="Res_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Res_Code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Res_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Addr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -171,7 +212,7 @@
           <Key>
             <PropertyRef Name="S_Code" />
           </Key>
-          <Property Name="S_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="S_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="C_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Pword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -179,34 +220,6 @@
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Addr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="OrderBentoSystemEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Additional" EntityType="Self.Additional" />
-          <EntitySet Name="ClassInfo" EntityType="Self.ClassInfo" />
-          <EntitySet Name="Food" EntityType="Self.Food" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" />
-          <EntitySet Name="Restaurant" EntityType="Self.Restaurant" />
-          <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" />
-          <FunctionImport Name="Proc_GetAdditional" ReturnType="Collection(OrderBentoSystemModel.Proc_GetAdditional_Result)">
-            <Parameter Name="A_Code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_GetClass" ReturnType="Collection(OrderBentoSystemModel.Proc_GetClass_Result)">
-            <Parameter Name="C_Code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_GetFood" ReturnType="Collection(OrderBentoSystemModel.Proc_GetFood_Result)">
-            <Parameter Name="R_Code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_GetOnDuty" ReturnType="Collection(OrderBentoSystemModel.Proc_GetOnDuty_Result)">
-            <Parameter Name="C_Code" Mode="In" Type="String" />
-            <Parameter Name="S_Code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_GetRestaurant" ReturnType="Collection(OrderBentoSystemModel.Proc_GetRestaurant_Result)">
-            <Parameter Name="R_Code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_GetStudent" ReturnType="Collection(OrderBentoSystemModel.Proc_GetStudent_Result)">
-            <Parameter Name="C_Code" Mode="In" Type="String" />
-            <Parameter Name="S_Code" Mode="In" Type="String" />
-          </FunctionImport>
-        </EntityContainer>
         <ComplexType Name="Proc_GetAdditional_Result">
           <Property Type="String" Name="Add_Code" Nullable="false" MaxLength="5" />
           <Property Type="String" Name="Add_Name" Nullable="true" MaxLength="10" />
@@ -245,6 +258,39 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Addr" Nullable="true" MaxLength="30" />
         </ComplexType>
+        <EntityType Name="OnDutyInfo">
+          <Key>
+            <PropertyRef Name="S_Code" />
+            <PropertyRef Name="OnDuty_Date" />
+          </Key>
+          <Property Name="S_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OnDuty_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="O_Number" />
+            <PropertyRef Name="S_Code" />
+            <PropertyRef Name="F_Code" />
+          </Key>
+          <Property Name="O_Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="S_Code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="F_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Subtotal" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Add_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AlreadyPaid" Type="Byte" />
+        </EntityType>
+        <EntityType Name="Sys_Account">
+          <Key>
+            <PropertyRef Name="Account" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -254,64 +300,64 @@
           <EntitySetMapping Name="Additional">
             <EntityTypeMapping TypeName="OrderBentoSystemModel.Additional">
               <MappingFragment StoreEntitySet="Additional">
-                <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
-                <ScalarProperty Name="Add_Name" ColumnName="Add_Name" />
-                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
                 <ScalarProperty Name="Add_Price" ColumnName="Add_Price" />
+                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
+                <ScalarProperty Name="Add_Name" ColumnName="Add_Name" />
+                <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ClassInfo">
             <EntityTypeMapping TypeName="OrderBentoSystemModel.ClassInfo">
               <MappingFragment StoreEntitySet="ClassInfo">
-                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
                 <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Food">
             <EntityTypeMapping TypeName="OrderBentoSystemModel.Food">
               <MappingFragment StoreEntitySet="Food">
-                <ScalarProperty Name="F_Code" ColumnName="F_Code" />
-                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
-                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
-                <ScalarProperty Name="F_Price" ColumnName="F_Price" />
                 <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
+                <ScalarProperty Name="F_Price" ColumnName="F_Price" />
+                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="F_Code" ColumnName="F_Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="OrderBentoSystemModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="O_Number" ColumnName="O_Number" />
-                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
-                <ScalarProperty Name="OnDuty" ColumnName="OnDuty" />
-                <ScalarProperty Name="O_Date" ColumnName="O_Date" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="IsFinish" ColumnName="IsFinish" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="O_Date" ColumnName="O_Date" />
+                <ScalarProperty Name="OnDuty" ColumnName="OnDuty" />
+                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
+                <ScalarProperty Name="O_Number" ColumnName="O_Number" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Restaurant">
             <EntityTypeMapping TypeName="OrderBentoSystemModel.Restaurant">
               <MappingFragment StoreEntitySet="Restaurant">
-                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
-                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
-                <ScalarProperty Name="Tel" ColumnName="Tel" />
                 <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
+                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StudentInfo">
             <EntityTypeMapping TypeName="OrderBentoSystemModel.StudentInfo">
               <MappingFragment StoreEntitySet="StudentInfo">
-                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
-                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
-                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
-                <ScalarProperty Name="Pword" ColumnName="Pword" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pword" ColumnName="Pword" />
+                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
+                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -377,6 +423,38 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="OnDutyInfo">
+            <EntityTypeMapping TypeName="OrderBentoSystemModel.OnDutyInfo">
+              <MappingFragment StoreEntitySet="OnDutyInfo">
+                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
+                <ScalarProperty Name="OnDuty_Date" ColumnName="OnDuty_Date" />
+                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="OrderBentoSystemModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="AlreadyPaid" ColumnName="AlreadyPaid" />
+                <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="F_Code" ColumnName="F_Code" />
+                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
+                <ScalarProperty Name="O_Number" ColumnName="O_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Account">
+            <EntityTypeMapping TypeName="OrderBentoSystemModel.Sys_Account">
+              <MappingFragment StoreEntitySet="Sys_Account">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

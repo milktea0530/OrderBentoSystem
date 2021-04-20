@@ -42,6 +42,7 @@ namespace OrderBentoSystem
             this.餐廳資料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.餐廳資料ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.菜單資料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.加購項目維護ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,14 +86,14 @@ namespace OrderBentoSystem
             // 開始訂購ToolStripMenuItem
             // 
             this.開始訂購ToolStripMenuItem.Name = "開始訂購ToolStripMenuItem";
-            this.開始訂購ToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.開始訂購ToolStripMenuItem.Size = new System.Drawing.Size(240, 36);
             this.開始訂購ToolStripMenuItem.Text = "開始訂購";
             this.開始訂購ToolStripMenuItem.Click += new System.EventHandler(this.開始訂購ToolStripMenuItem_Click);
             // 
             // 訂單明細ToolStripMenuItem
             // 
             this.訂單明細ToolStripMenuItem.Name = "訂單明細ToolStripMenuItem";
-            this.訂單明細ToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.訂單明細ToolStripMenuItem.Size = new System.Drawing.Size(240, 36);
             this.訂單明細ToolStripMenuItem.Text = "訂單明細";
             this.訂單明細ToolStripMenuItem.Click += new System.EventHandler(this.訂單明細ToolStripMenuItem_Click);
             // 
@@ -102,20 +103,20 @@ namespace OrderBentoSystem
             this.基本資料ToolStripMenuItem,
             this.值日生設定ToolStripMenuItem});
             this.學生資料ToolStripMenuItem.Name = "學生資料ToolStripMenuItem";
-            this.學生資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
+            this.學生資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
             this.學生資料ToolStripMenuItem.Text = "學生資料";
             // 
             // 基本資料ToolStripMenuItem
             // 
             this.基本資料ToolStripMenuItem.Name = "基本資料ToolStripMenuItem";
-            this.基本資料ToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.基本資料ToolStripMenuItem.Size = new System.Drawing.Size(268, 36);
             this.基本資料ToolStripMenuItem.Text = "基本資料";
             this.基本資料ToolStripMenuItem.Click += new System.EventHandler(this.基本資料ToolStripMenuItem_Click);
             // 
             // 值日生設定ToolStripMenuItem
             // 
             this.值日生設定ToolStripMenuItem.Name = "值日生設定ToolStripMenuItem";
-            this.值日生設定ToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.值日生設定ToolStripMenuItem.Size = new System.Drawing.Size(268, 36);
             this.值日生設定ToolStripMenuItem.Text = "修改值日生";
             this.值日生設定ToolStripMenuItem.Click += new System.EventHandler(this.值日生設定ToolStripMenuItem_Click);
             // 
@@ -123,7 +124,8 @@ namespace OrderBentoSystem
             // 
             this.餐廳資料ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.餐廳資料ToolStripMenuItem1,
-            this.菜單資料ToolStripMenuItem});
+            this.菜單資料ToolStripMenuItem,
+            this.加購項目維護ToolStripMenuItem});
             this.餐廳資料ToolStripMenuItem.Name = "餐廳資料ToolStripMenuItem";
             this.餐廳資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
             this.餐廳資料ToolStripMenuItem.Text = "菜單資料";
@@ -131,15 +133,23 @@ namespace OrderBentoSystem
             // 餐廳資料ToolStripMenuItem1
             // 
             this.餐廳資料ToolStripMenuItem1.Name = "餐廳資料ToolStripMenuItem1";
-            this.餐廳資料ToolStripMenuItem1.Size = new System.Drawing.Size(270, 36);
+            this.餐廳資料ToolStripMenuItem1.Size = new System.Drawing.Size(296, 36);
             this.餐廳資料ToolStripMenuItem1.Text = "餐廳維護";
             this.餐廳資料ToolStripMenuItem1.Click += new System.EventHandler(this.餐廳資料ToolStripMenuItem1_Click);
             // 
             // 菜單資料ToolStripMenuItem
             // 
             this.菜單資料ToolStripMenuItem.Name = "菜單資料ToolStripMenuItem";
-            this.菜單資料ToolStripMenuItem.Size = new System.Drawing.Size(240, 36);
+            this.菜單資料ToolStripMenuItem.Size = new System.Drawing.Size(296, 36);
             this.菜單資料ToolStripMenuItem.Text = "菜單維護";
+            this.菜單資料ToolStripMenuItem.Click += new System.EventHandler(this.菜單資料ToolStripMenuItem_Click);
+            // 
+            // 加購項目維護ToolStripMenuItem
+            // 
+            this.加購項目維護ToolStripMenuItem.Name = "加購項目維護ToolStripMenuItem";
+            this.加購項目維護ToolStripMenuItem.Size = new System.Drawing.Size(296, 36);
+            this.加購項目維護ToolStripMenuItem.Text = "加購項目維護";
+            this.加購項目維護ToolStripMenuItem.Click += new System.EventHandler(this.加購項目維護ToolStripMenuItem_Click);
             // 
             // Form_Menu
             // 
@@ -170,5 +180,6 @@ namespace OrderBentoSystem
         private System.Windows.Forms.ToolStripMenuItem 訂單明細ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 值日生設定ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 菜單資料ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 加購項目維護ToolStripMenuItem;
     }
 }

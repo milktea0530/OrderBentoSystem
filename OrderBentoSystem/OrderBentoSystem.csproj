@@ -71,6 +71,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Additional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Additional.Designer.cs">
+      <DependentUpon>Form_Additional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_FoodMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     <Compile Include="Form_Student.Designer.cs">
       <DependentUpon>Form_Student.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalVar\G_LogIn.cs" />
+    <Compile Include="Model\LogIn.cs" />
+    <Compile Include="Model\rMessage.cs" />
+    <Compile Include="OnDutyInfo.cs">
+      <DependentUpon>OrderBentoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="OrderBentoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,6 +144,9 @@
     </Compile>
     <Compile Include="Form_Order.Designer.cs">
       <DependentUpon>Form_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Orders.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
@@ -159,11 +174,19 @@
     <Compile Include="Restaurant.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\s_LogIn.cs" />
     <Compile Include="StudentInfo.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys_Account.cs">
+      <DependentUpon>OrderBentoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\String.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Additional.resx">
+      <DependentUpon>Form_Additional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_FoodMenu.resx">
       <DependentUpon>Form_FoodMenu.cs</DependentUpon>
@@ -242,5 +265,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
