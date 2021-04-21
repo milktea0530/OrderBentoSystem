@@ -43,6 +43,7 @@ namespace OrderBentoSystem
             this.餐廳資料ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.菜單資料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.加購項目維護ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_UserInfo = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,6 @@ namespace OrderBentoSystem
             // menuStrip2
             // 
             this.menuStrip2.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.點餐ToolStripMenuItem,
@@ -80,7 +80,7 @@ namespace OrderBentoSystem
             this.訂單明細ToolStripMenuItem});
             this.點餐ToolStripMenuItem.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.點餐ToolStripMenuItem.Name = "點餐ToolStripMenuItem";
-            this.點餐ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
+            this.點餐ToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
             this.點餐ToolStripMenuItem.Text = "訂餐系統";
             // 
             // 開始訂購ToolStripMenuItem
@@ -103,7 +103,7 @@ namespace OrderBentoSystem
             this.基本資料ToolStripMenuItem,
             this.值日生設定ToolStripMenuItem});
             this.學生資料ToolStripMenuItem.Name = "學生資料ToolStripMenuItem";
-            this.學生資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
+            this.學生資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
             this.學生資料ToolStripMenuItem.Text = "學生資料";
             // 
             // 基本資料ToolStripMenuItem
@@ -127,7 +127,7 @@ namespace OrderBentoSystem
             this.菜單資料ToolStripMenuItem,
             this.加購項目維護ToolStripMenuItem});
             this.餐廳資料ToolStripMenuItem.Name = "餐廳資料ToolStripMenuItem";
-            this.餐廳資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
+            this.餐廳資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
             this.餐廳資料ToolStripMenuItem.Text = "菜單資料";
             // 
             // 餐廳資料ToolStripMenuItem1
@@ -151,14 +151,26 @@ namespace OrderBentoSystem
             this.加購項目維護ToolStripMenuItem.Text = "加購項目維護";
             this.加購項目維護ToolStripMenuItem.Click += new System.EventHandler(this.加購項目維護ToolStripMenuItem_Click);
             // 
+            // lbl_UserInfo
+            // 
+            this.lbl_UserInfo.AutoSize = true;
+            this.lbl_UserInfo.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbl_UserInfo.Location = new System.Drawing.Point(23, 117);
+            this.lbl_UserInfo.Name = "lbl_UserInfo";
+            this.lbl_UserInfo.Size = new System.Drawing.Size(26, 28);
+            this.lbl_UserInfo.TabIndex = 4;
+            this.lbl_UserInfo.Text = "#";
+            // 
             // Form_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_UserInfo);
             this.Controls.Add(this.menuStrip2);
             this.Name = "Form_Menu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Form_Menu_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -181,5 +193,6 @@ namespace OrderBentoSystem
         private System.Windows.Forms.ToolStripMenuItem 值日生設定ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 菜單資料ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 加購項目維護ToolStripMenuItem;
+        private System.Windows.Forms.Label lbl_UserInfo;
     }
 }

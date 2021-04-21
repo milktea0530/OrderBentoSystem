@@ -7,7 +7,7 @@ namespace OrderBentoSystem.Services
     public class s_LogIn : Entities
     {
         // 登入判斷與寫入登入(靜態)資料
-        public rMessage UserConfirmation(string account, string password)
+        public rMessage UserConfirmation(string account, string password, string onDutyDate)
         {
             rMessage msgInfo = new rMessage();
 
@@ -26,6 +26,8 @@ namespace OrderBentoSystem.Services
                     msgInfo.msg = "密碼錯誤!!";
                     return msgInfo;
                 }
+                var CheckOuDuty = context.Proc_GetOnDuty("", account, onDutyDate);
+                if (CheckOuDuty.Count() > 0) G_LogIn.LogInData.onDuty = true;
                 // 確認是學生資料
                 // 寫入靜態資料
                 G_LogIn.LogInData.account = account;

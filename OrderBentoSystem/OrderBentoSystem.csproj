@@ -175,6 +175,9 @@
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\s_LogIn.cs" />
+    <Compile Include="Services\s_OnDuty.cs" />
+    <Compile Include="Services\s_Restaurant.cs" />
+    <Compile Include="Services\s_Student.cs" />
     <Compile Include="StudentInfo.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>

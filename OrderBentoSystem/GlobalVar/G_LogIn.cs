@@ -16,6 +16,13 @@ namespace OrderBentoSystem.GlobalVar
             LogInData.s_Code = "";
             LogInData.s_Name = "";
             LogInData.c_Code = "";
+            LogInData.onDuty = false;
+        }
+
+        // 輸出資訊
+        public static string OutPutUserInfo()
+        {
+            return $"{LogInData.title} {LogInData.s_Name}";
         }
     }
 }

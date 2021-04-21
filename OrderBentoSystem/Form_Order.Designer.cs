@@ -185,6 +185,7 @@ namespace OrderBentoSystem
             this.cBox_Restaurant.Name = "cBox_Restaurant";
             this.cBox_Restaurant.Size = new System.Drawing.Size(241, 32);
             this.cBox_Restaurant.TabIndex = 53;
+            this.cBox_Restaurant.SelectedIndexChanged += new System.EventHandler(this.cBox_Restaurant_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -200,7 +201,7 @@ namespace OrderBentoSystem
             // 
             this.lab_OnDuty.AutoSize = true;
             this.lab_OnDuty.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lab_OnDuty.Location = new System.Drawing.Point(336, 65);
+            this.lab_OnDuty.Location = new System.Drawing.Point(474, 23);
             this.lab_OnDuty.Name = "lab_OnDuty";
             this.lab_OnDuty.Size = new System.Drawing.Size(125, 24);
             this.lab_OnDuty.TabIndex = 51;
@@ -210,7 +211,7 @@ namespace OrderBentoSystem
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(241, 65);
+            this.label4.Location = new System.Drawing.Point(379, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 24);
             this.label4.TabIndex = 50;
@@ -252,8 +253,9 @@ namespace OrderBentoSystem
             this.cBox_Student.FormattingEnabled = true;
             this.cBox_Student.Location = new System.Drawing.Point(98, 59);
             this.cBox_Student.Name = "cBox_Student";
-            this.cBox_Student.Size = new System.Drawing.Size(121, 32);
+            this.cBox_Student.Size = new System.Drawing.Size(241, 32);
             this.cBox_Student.TabIndex = 46;
+            this.cBox_Student.SelectedIndexChanged += new System.EventHandler(this.cBox_Student_SelectedIndexChanged);
             // 
             // cBox_Class
             // 
@@ -261,8 +263,9 @@ namespace OrderBentoSystem
             this.cBox_Class.FormattingEnabled = true;
             this.cBox_Class.Location = new System.Drawing.Point(98, 15);
             this.cBox_Class.Name = "cBox_Class";
-            this.cBox_Class.Size = new System.Drawing.Size(121, 32);
+            this.cBox_Class.Size = new System.Drawing.Size(241, 32);
             this.cBox_Class.TabIndex = 45;
+            this.cBox_Class.SelectedIndexChanged += new System.EventHandler(this.cBox_Class_SelectedIndexChanged);
             // 
             // Form_Order
             // 
@@ -293,6 +296,7 @@ namespace OrderBentoSystem
             this.Controls.Add(this.cBox_Class);
             this.Name = "Form_Order";
             this.Text = "OrderForm";
+            this.Load += new System.EventHandler(this.Form_Order_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

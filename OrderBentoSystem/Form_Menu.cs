@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrderBentoSystem.GlobalVar;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,11 @@ namespace OrderBentoSystem
         {
             Form_Additional f_add = new Form_Additional();
             f_add.ShowDialog(this);
+        }
+
+        private void Form_Menu_Load(object sender, EventArgs e)
+        {
+            lbl_UserInfo.Text = G_LogIn.OutPutUserInfo();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace OrderBentoSystem.Model
         private String S_Code;
         private String S_Name;
         private String C_Code;
+        private bool OnDuty;
 
         public String account {
             get => Account;
@@ -44,6 +45,12 @@ namespace OrderBentoSystem.Model
         {
             get => C_Code;
             set => C_Code = value;
+        }
+
+        public bool onDuty
+        {
+            get => OnDuty;
+            set => OnDuty = value;
         }
     }
 }

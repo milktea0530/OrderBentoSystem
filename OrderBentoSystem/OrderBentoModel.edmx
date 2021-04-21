@@ -108,6 +108,7 @@
         <Function Name="Proc_GetOnDuty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="C_Code" Type="varchar" Mode="In" />
           <Parameter Name="S_Code" Type="varchar" Mode="In" />
+          <Parameter Name="OnDutyDate" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Proc_GetRestaurant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="R_Code" Type="varchar" Mode="In" />
@@ -150,6 +151,7 @@
           <FunctionImport Name="Proc_GetOnDuty" ReturnType="Collection(OrderBentoSystemModel.Proc_GetOnDuty_Result)">
             <Parameter Name="C_Code" Mode="In" Type="String" />
             <Parameter Name="S_Code" Mode="In" Type="String" />
+            <Parameter Name="OnDutyDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_GetRestaurant" ReturnType="Collection(OrderBentoSystemModel.Proc_GetRestaurant_Result)">
           <Parameter Name="R_Code" Mode="In" Type="String" />

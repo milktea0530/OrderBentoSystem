@@ -64,7 +64,7 @@ namespace OrderBentoSystem
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetFood_Result>("Proc_GetFood", r_CodeParameter);
         }
     
-        public virtual ObjectResult<Proc_GetOnDuty_Result> Proc_GetOnDuty(string c_Code, string s_Code)
+        public virtual ObjectResult<Proc_GetOnDuty_Result> Proc_GetOnDuty(string c_Code, string s_Code, string onDutyDate)
         {
             var c_CodeParameter = c_Code != null ?
                 new ObjectParameter("C_Code", c_Code) :
@@ -74,7 +74,11 @@ namespace OrderBentoSystem
                 new ObjectParameter("S_Code", s_Code) :
                 new ObjectParameter("S_Code", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetOnDuty_Result>("Proc_GetOnDuty", c_CodeParameter, s_CodeParameter);
+            var onDutyDateParameter = onDutyDate != null ?
+                new ObjectParameter("OnDutyDate", onDutyDate) :
+                new ObjectParameter("OnDutyDate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetOnDuty_Result>("Proc_GetOnDuty", c_CodeParameter, s_CodeParameter, onDutyDateParameter);
         }
     
         public virtual ObjectResult<Proc_GetRestaurant_Result> Proc_GetRestaurant(string r_Code)
