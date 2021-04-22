@@ -62,6 +62,7 @@ namespace OrderBentoSystem
             // menuStrip2
             // 
             this.menuStrip2.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.點餐ToolStripMenuItem,
@@ -80,7 +81,7 @@ namespace OrderBentoSystem
             this.訂單明細ToolStripMenuItem});
             this.點餐ToolStripMenuItem.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.點餐ToolStripMenuItem.Name = "點餐ToolStripMenuItem";
-            this.點餐ToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
+            this.點餐ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
             this.點餐ToolStripMenuItem.Text = "訂餐系統";
             // 
             // 開始訂購ToolStripMenuItem
@@ -103,7 +104,7 @@ namespace OrderBentoSystem
             this.基本資料ToolStripMenuItem,
             this.值日生設定ToolStripMenuItem});
             this.學生資料ToolStripMenuItem.Name = "學生資料ToolStripMenuItem";
-            this.學生資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
+            this.學生資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
             this.學生資料ToolStripMenuItem.Text = "學生資料";
             // 
             // 基本資料ToolStripMenuItem
@@ -127,7 +128,7 @@ namespace OrderBentoSystem
             this.菜單資料ToolStripMenuItem,
             this.加購項目維護ToolStripMenuItem});
             this.餐廳資料ToolStripMenuItem.Name = "餐廳資料ToolStripMenuItem";
-            this.餐廳資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 34);
+            this.餐廳資料ToolStripMenuItem.Size = new System.Drawing.Size(140, 32);
             this.餐廳資料ToolStripMenuItem.Text = "菜單資料";
             // 
             // 餐廳資料ToolStripMenuItem1

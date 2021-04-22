@@ -118,6 +118,8 @@ namespace OrderBentoSystem
             this.txt_Quantity.Name = "txt_Quantity";
             this.txt_Quantity.Size = new System.Drawing.Size(150, 36);
             this.txt_Quantity.TabIndex = 60;
+            this.txt_Quantity.Text = "1";
+            this.txt_Quantity.TextChanged += new System.EventHandler(this.txt_Quantity_TextChanged);
             // 
             // label9
             // 
@@ -148,6 +150,7 @@ namespace OrderBentoSystem
             this.lBox_Add.Name = "lBox_Add";
             this.lBox_Add.Size = new System.Drawing.Size(163, 268);
             this.lBox_Add.TabIndex = 57;
+            this.lBox_Add.SelectedIndexChanged += new System.EventHandler(this.lBox_Add_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -176,6 +179,7 @@ namespace OrderBentoSystem
             this.lBox_Menu.Name = "lBox_Menu";
             this.lBox_Menu.Size = new System.Drawing.Size(316, 268);
             this.lBox_Menu.TabIndex = 54;
+            this.lBox_Menu.SelectedIndexChanged += new System.EventHandler(this.lBox_Menu_SelectedIndexChanged);
             // 
             // cBox_Restaurant
             // 

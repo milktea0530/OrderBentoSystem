@@ -63,6 +63,12 @@ namespace OrderBentoSystem
         private void Form_Menu_Load(object sender, EventArgs e)
         {
             lbl_UserInfo.Text = G_LogIn.OutPutUserInfo();
+
+            if(G_LogIn.LogInData.title == "學生")
+            {
+                值日生設定ToolStripMenuItem.Visible = false;
+                餐廳資料ToolStripMenuItem.Visible = false;
+            }
         }
     }
 }

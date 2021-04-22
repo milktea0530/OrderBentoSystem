@@ -11,12 +11,24 @@ namespace OrderBentoSystem.Services
 {
     public class s_OnDuty : Entities
     {
+        #region 存放值日生的欄位與屬性
         private ObjectResult<Proc_GetOnDuty_Result> List_OnDuty = null;
-
         public ObjectResult<Proc_GetOnDuty_Result> list_Onduty
         {
             get => this.List_OnDuty;
             set => this.List_OnDuty = value;
+        }
+        #endregion
+
+        public static Proc_GetOnDuty_Result Now_OnDuty = new Proc_GetOnDuty_Result();
+
+        #region 取得值日生資料
+        public Proc_GetOnDuty_Result GetOnDutyForOrder(string C_Code)
+        {
+            // Proc_GetOnDuty_Result data = new Proc_GetOnDuty_Result();
+            var onDutyDate = DateTime.Now.ToString("yyyy/MM/dd");
+            Now_OnDuty = context.Proc_GetOnDuty(C_Code, "", onDutyDate).FirstOrDefault();
+            return Now_OnDuty;
         }
 
         /// <summary>
@@ -40,7 +52,9 @@ namespace OrderBentoSystem.Services
             }         
             return rMsg;
         }
+        #endregion
 
+        #region 輸出值日生資料
         /// <summary>
         /// 輸出值日生資料
         /// </summary>
@@ -54,7 +68,9 @@ namespace OrderBentoSystem.Services
             }
             return data;
         }
+        #endregion
 
+        #region 自動產生值日生
         /// <summary>
         /// 產生值日生
         /// </summary>
@@ -86,7 +102,7 @@ namespace OrderBentoSystem.Services
                 context.OnDutyInfo.Add(DataModel);
                 context.SaveChanges();
             }
-            
+            #endregion
         }
     }
 }

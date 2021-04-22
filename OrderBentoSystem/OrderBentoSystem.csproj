@@ -134,11 +134,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderBentoModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="OrderBentoSystemDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderBentoSystemDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Form_Order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,17 +222,6 @@
     </EntityDeploy>
     <None Include="OrderBentoModel.edmx.diagram">
       <DependentUpon>OrderBentoModel.edmx</DependentUpon>
-    </None>
-    <None Include="OrderBentoSystemDataSet.xsc">
-      <DependentUpon>OrderBentoSystemDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="OrderBentoSystemDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderBentoSystemDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OrderBentoSystemDataSet.xss">
-      <DependentUpon>OrderBentoSystemDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

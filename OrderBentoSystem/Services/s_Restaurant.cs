@@ -9,8 +9,10 @@ namespace OrderBentoSystem.Services
 {
     public class s_Restaurant : Entities
     {
+        #region 存放資料的欄位與屬性設定
         private List<Proc_GetRestaurant_Result> List_Restaurant = null;
         private List<Proc_GetFood_Result> List_Menu = null;
+        private List<Additional> List_Additional = null;
         public List<Proc_GetRestaurant_Result> list_Restaurant
         {
             get => this.List_Restaurant;
@@ -21,22 +23,62 @@ namespace OrderBentoSystem.Services
             get => this.List_Menu;
             set => this.List_Menu = value;
         }
-        // 存放篩選後的菜單
+        public List<Additional> list_Additional
+        {
+            get => this.List_Additional;
+            set => this.List_Additional = value;
+        }
+        #endregion
+
+        #region 存放篩選後的資料 
         public List<Proc_GetFood_Result> Filter_Mune = null;
-        // 存放選擇的資料(靜態?
+        public List<Additional> Filter_Additional = new List<Additional>();
+        #endregion
+
+        #region 存放當下選擇的資料
         public static Proc_GetRestaurant_Result Select_Restaurant = null;
         public static Proc_GetFood_Result Select_Menu = null;
-        // UI的下拉式修改資料要跟著調整選擇的資料
+        public static Additional Select_Additional = null;
+        #endregion
+
+        #region 小計的欄位與屬性設定
+        private int Quantity = 1;
+        public string quantity
+        {
+            get => this.Quantity.ToString();
+            set {
+                int q = 0;
+                Int32.TryParse(value, out q);
+                this.Quantity = q;
+            }
+        }
+        private double Subtotal;
+        public double subtotal
+        {
+            get => this.Subtotal;
+            set => this.Subtotal = value;
+        }
+        #endregion
+
+        #region 選擇的資料修改時要跟著調整資料集
         // 餐廳資料
-        public void setSelectClass(int Index)
+        public void setSelectRestaurant(int Index)
         {
             Select_Restaurant = List_Restaurant[Index];
         }
         // 食物資料
-        public void setSelectStudent(int Index)
+        public void setSelectMenu(int Index)
         {
             Select_Menu = Filter_Mune[Index];
         }
+        // 加購項目 
+        public void setSelectAdditional(int Index)
+        {
+            Select_Additional = Filter_Additional[Index];
+        }
+        #endregion
+
+        #region 取得餐廳+菜單+加購項目資料
         /// <summary>
         /// 取得資料
         /// </summary>
@@ -55,6 +97,9 @@ namespace OrderBentoSystem.Services
                 var temp_Menu = context.Proc_GetFood("");
                 List_Menu = temp_Menu.ToList();
 
+                // 加購項目
+                List_Additional = context.Additional.ToList();
+
                 msgInfo.isSuccess = true;
             }
             catch (Exception)
@@ -64,6 +109,9 @@ namespace OrderBentoSystem.Services
             }
             return msgInfo;
         }
+        #endregion
+
+        #region 輸出餐廳, 菜單, 加購項目
         /// <summary>
         /// 輸出餐廳
         /// </summary>
@@ -85,12 +133,49 @@ namespace OrderBentoSystem.Services
         {
             List<string> data = new List<string>();
             Filter_Mune = List_Menu.Where(r => r.Res_Code == Select_Restaurant.Res_Code).ToList();
-            // 這邊需要特別去判斷所選班級 (管理值需要篩選)
+            // 這邊需要特別去判斷所選餐廳
             foreach (var item in Filter_Mune)
             {
-                data.Add(item.Res_Name);
+                data.Add(item.F_Name);
             }
             return data;
         }
+       
+        public List<string> OutPutAdditional()
+        {
+            List<string> data = new List<string>();
+            // 如果有一種以上的加購項目需要拆解
+            var split_add = Select_Menu.Add_Code.Split('|');
+            Filter_Additional.Clear();
+            // 加入一筆加購項目是沒有的資料
+            Additional addFirst = new Additional();
+            addFirst.Add_Code = "-1";
+            addFirst.Add_Name = "無";
+            addFirst.Add_Price = 0;
+            Filter_Additional.Add(addFirst);
+            data.Add(addFirst.Add_Name);
+            // 取得餐點的加購項目
+            foreach (var add in split_add)
+            {
+                // 取得所有的加購項目
+                var temp_data = List_Additional.Where(m => m.Add_Code == add).ToList();
+                // 個別寫入資料集
+                foreach (var item in temp_data)
+                {
+                    Filter_Additional.Add(item);
+                    data.Add(item.Add_Name);
+                }
+            }
+            return data;
+        }
+        #endregion
+
+        #region 計算小計
+        public void GetSubTotal(string q)
+        {
+            Int32.TryParse(q, out Quantity);
+            Subtotal = Convert.ToDouble(Select_Menu.F_Price + Select_Additional.Add_Price) * Quantity;
+        }
+        #endregion
     }
 }
