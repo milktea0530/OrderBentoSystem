@@ -30,11 +30,11 @@ namespace OrderBentoSystem
         public virtual DbSet<Additional> Additional { get; set; }
         public virtual DbSet<ClassInfo> ClassInfo { get; set; }
         public virtual DbSet<Food> Food { get; set; }
+        public virtual DbSet<OnDutyInfo> OnDutyInfo { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<StudentInfo> StudentInfo { get; set; }
-        public virtual DbSet<OnDutyInfo> OnDutyInfo { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Sys_Account> Sys_Account { get; set; }
     
         public virtual ObjectResult<Proc_GetAdditional_Result> Proc_GetAdditional(string a_Code)
@@ -101,6 +101,37 @@ namespace OrderBentoSystem
                 new ObjectParameter("S_Code", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetStudent_Result>("Proc_GetStudent", c_CodeParameter, s_CodeParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetOrder_Result> Proc_GetOrder(string o_Number)
+        {
+            var o_NumberParameter = o_Number != null ?
+                new ObjectParameter("O_Number", o_Number) :
+                new ObjectParameter("O_Number", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetOrder_Result>("Proc_GetOrder", o_NumberParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetODStatistics_Result> Proc_GetODStatistics(string o_Number)
+        {
+            var o_NumberParameter = o_Number != null ?
+                new ObjectParameter("O_Number", o_Number) :
+                new ObjectParameter("O_Number", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetODStatistics_Result>("Proc_GetODStatistics", o_NumberParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetOrderDetail_Result> Proc_GetOrderDetail(string o_Number, string res_Code)
+        {
+            var o_NumberParameter = o_Number != null ?
+                new ObjectParameter("O_Number", o_Number) :
+                new ObjectParameter("O_Number", typeof(string));
+    
+            var res_CodeParameter = res_Code != null ?
+                new ObjectParameter("Res_Code", res_Code) :
+                new ObjectParameter("Res_Code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetOrderDetail_Result>("Proc_GetOrderDetail", o_NumberParameter, res_CodeParameter);
         }
     }
 }

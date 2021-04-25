@@ -17,7 +17,8 @@ namespace OrderBentoSystem
         s_Student obj_Student = new s_Student();
         s_Restaurant obj_Restaurant = new s_Restaurant();
         s_OnDuty obj_OnDuty = new s_OnDuty();
-
+        s_Order obj_Order = new s_Order();
+        
         #region Function
         /// <summary>
         /// 設定小計
@@ -130,6 +131,9 @@ namespace OrderBentoSystem
             cBox_Student.SelectedIndex = 0;
             // 值日生設定
             setOnDuty();
+
+            // 調整訂單編號
+            obj_Order.GetOrder();
         }
         #endregion
 
@@ -186,5 +190,26 @@ namespace OrderBentoSystem
             }
         }
         #endregion
+
+        private void btn_AddOrder_Click(object sender, EventArgs e)
+        {
+            OrderDetail odInfo = new OrderDetail();
+            obj_Order.GetOrder();
+            // 填入明細資料
+            if(obj_Order.order != null) odInfo.O_Number = obj_Order.order.O_Number;
+            odInfo.S_Code = s_Student.Select_Student.S_Code;
+            odInfo.F_Code = s_Restaurant.Select_Menu.F_Code;
+            odInfo.Quantity = Int32.Parse(txt_Quantity.Text);
+            odInfo.Price = s_Restaurant.Select_Menu.F_Price;
+            odInfo.Subtotal = Decimal.Parse(txt_Subtotal.Text);
+            // 特別處理-1是無
+            var addCode = s_Restaurant.Select_Additional.Add_Code;
+            odInfo.Add_Code = addCode == "-1" ? "" : addCode;
+            odInfo.AlreadyPaid = 0;
+            obj_Order.orderDetail = odInfo;
+            // 處理新增訂單動作
+            var msgInfo = obj_Order.addOrder();
+            MessageBox.Show(msgInfo.msg);
+        }
     }
 }

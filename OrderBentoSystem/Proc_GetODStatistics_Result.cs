@@ -10,18 +10,15 @@
 namespace OrderBentoSystem
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class Proc_GetODStatistics_Result
     {
-        public int id { get; set; }
-        public string O_Number { get; set; }
-        public string S_Code { get; set; }
         public string F_Code { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public Nullable<decimal> Subtotal { get; set; }
+        public string F_Name { get; set; }
         public string Add_Code { get; set; }
-        public Nullable<byte> AlreadyPaid { get; set; }
+        public string Add_Name { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<decimal> Subtotal { get; set; }
+        public string Res_Name { get; set; }
     }
 }

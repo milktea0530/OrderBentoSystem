@@ -41,29 +41,29 @@ namespace OrderBentoSystem
             this.lBox_Statistics = new System.Windows.Forms.ListBox();
             this.lBox_OrderDetail = new System.Windows.Forms.ListBox();
             this.lbl_OrderDate = new System.Windows.Forms.Label();
-            this.cBox_Restaurant = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.lab_OnDuty = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cBox_Class = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_OrderDetailAllClear
             // 
             this.btn_OrderDetailAllClear.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_OrderDetailAllClear.Location = new System.Drawing.Point(465, 298);
+            this.btn_OrderDetailAllClear.Location = new System.Drawing.Point(584, 368);
             this.btn_OrderDetailAllClear.Name = "btn_OrderDetailAllClear";
-            this.btn_OrderDetailAllClear.Size = new System.Drawing.Size(136, 80);
+            this.btn_OrderDetailAllClear.Size = new System.Drawing.Size(176, 80);
             this.btn_OrderDetailAllClear.TabIndex = 73;
-            this.btn_OrderDetailAllClear.Text = "訂購單\r\n清空(全)";
+            this.btn_OrderDetailAllClear.Text = "清空全部明細";
             this.btn_OrderDetailAllClear.UseVisualStyleBackColor = true;
+            this.btn_OrderDetailAllClear.Click += new System.EventHandler(this.btn_OrderDetailAllClear_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.Location = new System.Drawing.Point(36, 642);
+            this.label8.Location = new System.Drawing.Point(38, 414);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(123, 24);
             this.label8.TabIndex = 72;
@@ -73,7 +73,7 @@ namespace OrderBentoSystem
             // 
             this.lbl_Amount.AutoSize = true;
             this.lbl_Amount.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbl_Amount.Location = new System.Drawing.Point(173, 642);
+            this.lbl_Amount.Location = new System.Drawing.Point(175, 414);
             this.lbl_Amount.Name = "lbl_Amount";
             this.lbl_Amount.Size = new System.Drawing.Size(36, 24);
             this.lbl_Amount.TabIndex = 71;
@@ -82,7 +82,7 @@ namespace OrderBentoSystem
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(40, 123);
+            this.label2.Location = new System.Drawing.Point(40, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(577, 2);
             this.label2.TabIndex = 70;
@@ -90,27 +90,29 @@ namespace OrderBentoSystem
             // btn_OrderFinish
             // 
             this.btn_OrderFinish.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_OrderFinish.Location = new System.Drawing.Point(465, 526);
+            this.btn_OrderFinish.Location = new System.Drawing.Point(630, 606);
             this.btn_OrderFinish.Name = "btn_OrderFinish";
             this.btn_OrderFinish.Size = new System.Drawing.Size(136, 80);
             this.btn_OrderFinish.TabIndex = 69;
             this.btn_OrderFinish.Text = "訂購單\r\n完成";
             this.btn_OrderFinish.UseVisualStyleBackColor = true;
+            this.btn_OrderFinish.Click += new System.EventHandler(this.btn_OrderFinish_Click);
             // 
             // btn_OrderDetailClear
             // 
             this.btn_OrderDetailClear.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_OrderDetailClear.Location = new System.Drawing.Point(465, 203);
+            this.btn_OrderDetailClear.Location = new System.Drawing.Point(388, 368);
             this.btn_OrderDetailClear.Name = "btn_OrderDetailClear";
-            this.btn_OrderDetailClear.Size = new System.Drawing.Size(136, 80);
+            this.btn_OrderDetailClear.Size = new System.Drawing.Size(180, 80);
             this.btn_OrderDetailClear.TabIndex = 68;
-            this.btn_OrderDetailClear.Text = "訂購單\r\n清空(單)";
+            this.btn_OrderDetailClear.Text = "移除單筆明細";
             this.btn_OrderDetailClear.UseVisualStyleBackColor = true;
+            this.btn_OrderDetailClear.Click += new System.EventHandler(this.btn_OrderDetailClear_Click);
             // 
             // btn_OrderSave
             // 
             this.btn_OrderSave.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_OrderSave.Location = new System.Drawing.Point(465, 434);
+            this.btn_OrderSave.Location = new System.Drawing.Point(630, 520);
             this.btn_OrderSave.Name = "btn_OrderSave";
             this.btn_OrderSave.Size = new System.Drawing.Size(136, 80);
             this.btn_OrderSave.TabIndex = 67;
@@ -121,7 +123,7 @@ namespace OrderBentoSystem
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(32, 137);
+            this.label7.Location = new System.Drawing.Point(32, 91);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 24);
             this.label7.TabIndex = 66;
@@ -131,7 +133,7 @@ namespace OrderBentoSystem
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(32, 396);
+            this.label6.Location = new System.Drawing.Point(32, 479);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 24);
             this.label6.TabIndex = 65;
@@ -142,9 +144,9 @@ namespace OrderBentoSystem
             this.lBox_Statistics.Font = new System.Drawing.Font("標楷體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lBox_Statistics.FormattingEnabled = true;
             this.lBox_Statistics.ItemHeight = 20;
-            this.lBox_Statistics.Location = new System.Drawing.Point(40, 434);
+            this.lBox_Statistics.Location = new System.Drawing.Point(40, 522);
             this.lBox_Statistics.Name = "lBox_Statistics";
-            this.lBox_Statistics.Size = new System.Drawing.Size(405, 164);
+            this.lBox_Statistics.Size = new System.Drawing.Size(555, 164);
             this.lBox_Statistics.TabIndex = 64;
             // 
             // lBox_OrderDetail
@@ -152,39 +154,19 @@ namespace OrderBentoSystem
             this.lBox_OrderDetail.Font = new System.Drawing.Font("標楷體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lBox_OrderDetail.FormattingEnabled = true;
             this.lBox_OrderDetail.ItemHeight = 20;
-            this.lBox_OrderDetail.Location = new System.Drawing.Point(40, 174);
+            this.lBox_OrderDetail.Location = new System.Drawing.Point(40, 128);
             this.lBox_OrderDetail.Name = "lBox_OrderDetail";
-            this.lBox_OrderDetail.Size = new System.Drawing.Size(405, 204);
+            this.lBox_OrderDetail.Size = new System.Drawing.Size(726, 224);
             this.lBox_OrderDetail.TabIndex = 63;
             // 
             // lbl_OrderDate
             // 
             this.lbl_OrderDate.AutoSize = true;
             this.lbl_OrderDate.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbl_OrderDate.Location = new System.Drawing.Point(427, 76);
+            this.lbl_OrderDate.Location = new System.Drawing.Point(38, 368);
             this.lbl_OrderDate.Name = "lbl_OrderDate";
-            this.lbl_OrderDate.Size = new System.Drawing.Size(125, 24);
+            this.lbl_OrderDate.Size = new System.Drawing.Size(0, 24);
             this.lbl_OrderDate.TabIndex = 62;
-            this.lbl_OrderDate.Text = "這是Label";
-            // 
-            // cBox_Restaurant
-            // 
-            this.cBox_Restaurant.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cBox_Restaurant.FormattingEnabled = true;
-            this.cBox_Restaurant.Location = new System.Drawing.Point(111, 73);
-            this.cBox_Restaurant.Name = "cBox_Restaurant";
-            this.cBox_Restaurant.Size = new System.Drawing.Size(241, 32);
-            this.cBox_Restaurant.TabIndex = 61;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(32, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 24);
-            this.label5.TabIndex = 60;
-            this.label5.Text = "店家:";
             // 
             // lab_OnDuty
             // 
@@ -192,9 +174,8 @@ namespace OrderBentoSystem
             this.lab_OnDuty.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lab_OnDuty.Location = new System.Drawing.Point(522, 25);
             this.lab_OnDuty.Name = "lab_OnDuty";
-            this.lab_OnDuty.Size = new System.Drawing.Size(125, 24);
+            this.lab_OnDuty.Size = new System.Drawing.Size(0, 24);
             this.lab_OnDuty.TabIndex = 59;
-            this.lab_OnDuty.Text = "這是Label";
             // 
             // label4
             // 
@@ -224,12 +205,22 @@ namespace OrderBentoSystem
             this.cBox_Class.Name = "cBox_Class";
             this.cBox_Class.Size = new System.Drawing.Size(121, 32);
             this.cBox_Class.TabIndex = 56;
+            this.cBox_Class.SelectedIndexChanged += new System.EventHandler(this.cBox_Class_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.Location = new System.Drawing.Point(48, 462);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(712, 2);
+            this.label3.TabIndex = 74;
             // 
             // Form_OrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 687);
+            this.ClientSize = new System.Drawing.Size(803, 699);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_OrderDetailAllClear);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lbl_Amount);
@@ -242,14 +233,13 @@ namespace OrderBentoSystem
             this.Controls.Add(this.lBox_Statistics);
             this.Controls.Add(this.lBox_OrderDetail);
             this.Controls.Add(this.lbl_OrderDate);
-            this.Controls.Add(this.cBox_Restaurant);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.lab_OnDuty);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cBox_Class);
             this.Name = "Form_OrderDetail";
             this.Text = "Form_OrderDetail";
+            this.Load += new System.EventHandler(this.Form_OrderDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,11 +259,10 @@ namespace OrderBentoSystem
         private System.Windows.Forms.ListBox lBox_Statistics;
         private System.Windows.Forms.ListBox lBox_OrderDetail;
         private System.Windows.Forms.Label lbl_OrderDate;
-        private System.Windows.Forms.ComboBox cBox_Restaurant;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lab_OnDuty;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cBox_Class;
+        private System.Windows.Forms.Label label3;
     }
 }

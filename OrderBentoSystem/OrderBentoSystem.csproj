@@ -155,7 +155,16 @@
     <Compile Include="Proc_GetFood_Result.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Proc_GetODStatistics_Result.cs">
+      <DependentUpon>OrderBentoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Proc_GetOnDuty_Result.cs">
+      <DependentUpon>OrderBentoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetOrderDetail_Result.cs">
+      <DependentUpon>OrderBentoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetOrder_Result.cs">
       <DependentUpon>OrderBentoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Proc_GetRestaurant_Result.cs">
@@ -171,6 +180,7 @@
     </Compile>
     <Compile Include="Services\s_LogIn.cs" />
     <Compile Include="Services\s_OnDuty.cs" />
+    <Compile Include="Services\s_Order.cs" />
     <Compile Include="Services\s_Restaurant.cs" />
     <Compile Include="Services\s_Student.cs" />
     <Compile Include="StudentInfo.cs">

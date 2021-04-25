@@ -82,6 +82,7 @@ namespace OrderBentoSystem
             this.btn_AddOrder.TabIndex = 64;
             this.btn_AddOrder.Text = "訂購";
             this.btn_AddOrder.UseVisualStyleBackColor = true;
+            this.btn_AddOrder.Click += new System.EventHandler(this.btn_AddOrder_Click);
             // 
             // label10
             // 

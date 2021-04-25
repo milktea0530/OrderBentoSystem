@@ -8,11 +8,11 @@
         <EntityTypeShape EntityType="OrderBentoSystemModel.Additional" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="OrderBentoSystemModel.ClassInfo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="OrderBentoSystemModel.Food" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="OrderBentoSystemModel.Orders" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="OrderBentoSystemModel.Restaurant" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="OrderBentoSystemModel.StudentInfo" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="OrderBentoSystemModel.OnDutyInfo" Width="1.5" PointX="4.75" PointY="2.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="OrderBentoSystemModel.OrderDetail" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="OrderBentoSystemModel.OnDutyInfo" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="OrderBentoSystemModel.OrderDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="OrderBentoSystemModel.Orders" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="OrderBentoSystemModel.Restaurant" Width="1.5" PointX="4.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="OrderBentoSystemModel.StudentInfo" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="false" />
         <EntityTypeShape EntityType="OrderBentoSystemModel.Sys_Account" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>

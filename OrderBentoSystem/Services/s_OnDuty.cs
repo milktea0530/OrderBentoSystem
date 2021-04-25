@@ -20,6 +20,7 @@ namespace OrderBentoSystem.Services
         }
         #endregion
 
+        // 紀錄當前班級的值日生
         public static Proc_GetOnDuty_Result Now_OnDuty = new Proc_GetOnDuty_Result();
 
         #region 取得值日生資料
