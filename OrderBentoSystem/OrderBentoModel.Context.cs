@@ -81,28 +81,6 @@ namespace OrderBentoSystem
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetOnDuty_Result>("Proc_GetOnDuty", c_CodeParameter, s_CodeParameter, onDutyDateParameter);
         }
     
-        public virtual ObjectResult<Proc_GetRestaurant_Result> Proc_GetRestaurant(string r_Code)
-        {
-            var r_CodeParameter = r_Code != null ?
-                new ObjectParameter("R_Code", r_Code) :
-                new ObjectParameter("R_Code", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetRestaurant_Result>("Proc_GetRestaurant", r_CodeParameter);
-        }
-    
-        public virtual ObjectResult<Proc_GetStudent_Result> Proc_GetStudent(string c_Code, string s_Code)
-        {
-            var c_CodeParameter = c_Code != null ?
-                new ObjectParameter("C_Code", c_Code) :
-                new ObjectParameter("C_Code", typeof(string));
-    
-            var s_CodeParameter = s_Code != null ?
-                new ObjectParameter("S_Code", s_Code) :
-                new ObjectParameter("S_Code", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetStudent_Result>("Proc_GetStudent", c_CodeParameter, s_CodeParameter);
-        }
-    
         public virtual ObjectResult<Proc_GetOrder_Result> Proc_GetOrder(string o_Number)
         {
             var o_NumberParameter = o_Number != null ?
@@ -132,6 +110,49 @@ namespace OrderBentoSystem
                 new ObjectParameter("Res_Code", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetOrderDetail_Result>("Proc_GetOrderDetail", o_NumberParameter, res_CodeParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetStudent_Result> Proc_GetStudent(string c_Code, string s_Code)
+        {
+            var c_CodeParameter = c_Code != null ?
+                new ObjectParameter("C_Code", c_Code) :
+                new ObjectParameter("C_Code", typeof(string));
+    
+            var s_CodeParameter = s_Code != null ?
+                new ObjectParameter("S_Code", s_Code) :
+                new ObjectParameter("S_Code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetStudent_Result>("Proc_GetStudent", c_CodeParameter, s_CodeParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetRestaurant_Result> Proc_GetRestaurant(string r_Code)
+        {
+            var r_CodeParameter = r_Code != null ?
+                new ObjectParameter("R_Code", r_Code) :
+                new ObjectParameter("R_Code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetRestaurant_Result>("Proc_GetRestaurant", r_CodeParameter);
+        }
+    
+        public virtual int Proc_UpdateFood(string foodName, Nullable<decimal> foodPrice, string add_Code, string foodCode)
+        {
+            var foodNameParameter = foodName != null ?
+                new ObjectParameter("FoodName", foodName) :
+                new ObjectParameter("FoodName", typeof(string));
+    
+            var foodPriceParameter = foodPrice.HasValue ?
+                new ObjectParameter("FoodPrice", foodPrice) :
+                new ObjectParameter("FoodPrice", typeof(decimal));
+    
+            var add_CodeParameter = add_Code != null ?
+                new ObjectParameter("Add_Code", add_Code) :
+                new ObjectParameter("Add_Code", typeof(string));
+    
+            var foodCodeParameter = foodCode != null ?
+                new ObjectParameter("FoodCode", foodCode) :
+                new ObjectParameter("FoodCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_UpdateFood", foodNameParameter, foodPriceParameter, add_CodeParameter, foodCodeParameter);
         }
     }
 }

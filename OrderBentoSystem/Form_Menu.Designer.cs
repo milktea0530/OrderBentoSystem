@@ -62,7 +62,6 @@ namespace OrderBentoSystem
             // menuStrip2
             // 
             this.menuStrip2.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.點餐ToolStripMenuItem,
@@ -110,15 +109,16 @@ namespace OrderBentoSystem
             // 基本資料ToolStripMenuItem
             // 
             this.基本資料ToolStripMenuItem.Name = "基本資料ToolStripMenuItem";
-            this.基本資料ToolStripMenuItem.Size = new System.Drawing.Size(268, 36);
+            this.基本資料ToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.基本資料ToolStripMenuItem.Text = "基本資料";
             this.基本資料ToolStripMenuItem.Click += new System.EventHandler(this.基本資料ToolStripMenuItem_Click);
             // 
             // 值日生設定ToolStripMenuItem
             // 
             this.值日生設定ToolStripMenuItem.Name = "值日生設定ToolStripMenuItem";
-            this.值日生設定ToolStripMenuItem.Size = new System.Drawing.Size(268, 36);
+            this.值日生設定ToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.值日生設定ToolStripMenuItem.Text = "修改值日生";
+            this.值日生設定ToolStripMenuItem.Visible = false;
             this.值日生設定ToolStripMenuItem.Click += new System.EventHandler(this.值日生設定ToolStripMenuItem_Click);
             // 
             // 餐廳資料ToolStripMenuItem

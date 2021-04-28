@@ -12,7 +12,7 @@ namespace OrderBentoSystem.Services
         #region 存放資料的欄位與屬性設定
         private List<Proc_GetRestaurant_Result> List_Restaurant = null;
         private List<Proc_GetFood_Result> List_Menu = null;
-        private List<Additional> List_Additional = null;
+        private List<Additional> List_Additional = new List<Additional>();
         public List<Proc_GetRestaurant_Result> list_Restaurant
         {
             get => this.List_Restaurant;
@@ -38,7 +38,7 @@ namespace OrderBentoSystem.Services
         #region 存放當下選擇的資料
         public static Proc_GetRestaurant_Result Select_Restaurant = null;
         public static Proc_GetFood_Result Select_Menu = null;
-        public static Additional Select_Additional = null;
+        public static Additional Select_Additional = new Additional();
         #endregion
 
         #region 小計的欄位與屬性設定
@@ -75,6 +75,11 @@ namespace OrderBentoSystem.Services
         public void setSelectAdditional(int Index)
         {
             Select_Additional = Filter_Additional[Index];
+        }
+        // 加購項目 
+        public void setSelectAdditional1(int Index)
+        {
+            Select_Additional = List_Additional[Index];
         }
         #endregion
 
@@ -168,14 +173,206 @@ namespace OrderBentoSystem.Services
             }
             return data;
         }
+
+        public List<string> OutPutAdditional1()
+        {
+            List<string> data = new List<string>();    
+            foreach (var item in list_Additional)
+            {
+                data.Add($"{item.Add_Name}:{Convert.ToInt32(item.Add_Price)}元");
+            }
+            return data;
+        }
         #endregion
 
         #region 計算小計
-        public void GetSubTotal(string q)
+            public void GetSubTotal(string q)
         {
             Int32.TryParse(q, out Quantity);
             Subtotal = Convert.ToDouble(Select_Menu.F_Price + Select_Additional.Add_Price) * Quantity;
         }
         #endregion
+
+        #region 修改餐廳資料
+        /// <summary>
+        /// 修改餐廳資料
+        /// </summary>
+        /// <param name="name">餐廳名稱</param>
+        /// <param name="addr">地址</param>
+        /// <param name="tel">電話</param>
+        /// <returns></returns>
+        public rMessage UpdateRestaurant(string name, string addr, string tel)
+        {
+            rMessage msgInfo = new rMessage();
+            try
+            {
+                var updateRes = context.Restaurant.Where(r => r.Res_Code == Select_Restaurant.Res_Code).First();
+                updateRes.Addr = addr;
+                updateRes.Res_Name = name;
+                updateRes.Tel = tel;
+
+                context.SaveChanges();
+
+                msgInfo.isSuccess = true;
+                msgInfo.msg = "餐廳資料修改成功!";
+            }
+            catch (Exception)
+            {
+                msgInfo.isSuccess = false;
+                msgInfo.msg = "餐廳資料修改發生錯誤!";
+            }
+            return msgInfo;
+        }
+        #endregion
+
+        #region 建立餐廳資料
+        /// <summary>
+        /// 建立餐廳資料
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public rMessage addRestaurant(Restaurant data)
+        {
+            rMessage msgInfo = new rMessage();
+            try
+            {
+                // 製作編號
+                var count = context.Restaurant.Count() + 1;
+                data.Res_Code = $"S{count}";
+                if(count < 10)
+                {
+                    data.Res_Code = $"S0{count}";
+                }
+                // 資料寫入資料表
+                context.Restaurant.Add(data);
+                context.SaveChanges();
+                msgInfo.isSuccess = true;
+                msgInfo.msg = "成功建立餐廳資料!";
+            }
+            catch (Exception)
+            {
+                msgInfo.isSuccess = false;
+                msgInfo.msg = "建立餐廳發生錯誤!";
+            }          
+            return msgInfo;
+        }
+        #endregion
+
+        public int GetAddIndex()
+        {
+            var index = list_Additional.FindIndex(a => a.Add_Code == Select_Menu.Add_Code);
+            return index;
+        }
+        /// <summary>
+        /// 修改菜品
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <returns></returns>
+        public rMessage UpdateFood(string name, int price)
+        {
+            rMessage msgInfo = new rMessage();
+            try
+            {
+                context.Proc_UpdateFood(name, price, Select_Additional.Add_Code, Select_Menu.F_Code);
+
+                msgInfo.isSuccess = true;
+                msgInfo.msg = "餐點修改完成!";
+            }
+            catch (Exception e)
+            {
+                msgInfo.isSuccess = false;
+                msgInfo.msg = "餐點修改失敗!";
+            }      
+            return msgInfo;
+        }
+        /// <summary>
+        /// 新增菜品
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public rMessage AddFood(Food data)
+        {
+            rMessage msgInfo = new rMessage();
+            try
+            {
+                // 製作編號
+                var count = context.Food.Count() + 1;
+                data.F_Code = $"P{count}";
+                if (count < 10)
+                {
+                    data.F_Code = $"P0{count}";
+                }
+                context.Food.Add(data);
+                context.SaveChanges();
+                msgInfo.isSuccess = true;
+                msgInfo.msg = "餐點新增完成!";
+            }
+            catch (Exception)
+            {
+                msgInfo.isSuccess = false;
+                msgInfo.msg = "餐點新增失敗!";
+            }
+            return msgInfo;
+        }
+        /// <summary>
+        /// 修改加購項目
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <returns></returns>
+        public rMessage UpdateAdditional(string name, int price)
+        {
+            rMessage msgInfo = new rMessage();
+            try
+            {
+                var data = context.Additional.Where(m => m.Add_Code == Select_Additional.Add_Code).First();
+                data.Add_Name = name;
+                data.Add_Price = price;
+                context.SaveChanges();
+
+                msgInfo.isSuccess = true;
+                msgInfo.msg = "加購項目修改成功!";
+            }
+            catch (Exception)
+            {
+
+                msgInfo.isSuccess = false;
+                msgInfo.msg = "加購項目修改失敗!";
+            }
+            return msgInfo;
+        }
+        /// <summary>
+        /// 新增加購項目
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public rMessage cAdditional(Additional data)
+        {
+            rMessage msgInfo = new rMessage();
+            try
+            {
+                // 設定編號
+                var count = context.Additional.Count() + 1;
+                data.Add_Code = $"A1{count}";
+                if (count < 10)
+                {
+                    data.Add_Code = $"A10{count}";
+                }
+                // 寫入資料
+                context.Additional.Add(data);
+                context.SaveChanges();
+
+                msgInfo.isSuccess = true;
+                msgInfo.msg = "加購項目新增成功!";
+            }
+            catch (Exception)
+            {
+                msgInfo.isSuccess = false;
+                msgInfo.msg = "加購項目新增失敗!";
+            }
+
+            return msgInfo;
+        }
     }
 }

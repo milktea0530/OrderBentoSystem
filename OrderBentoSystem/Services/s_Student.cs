@@ -26,7 +26,7 @@ namespace OrderBentoSystem.Services
             get => this.List_Student;
             set => this.List_Student = value;
         }
-        // 存放選擇的資料
+        // 存放選擇的資料(靜態)
         public static Proc_GetClass_Result Select_Class = null;
         public static Proc_GetStudent_Result Select_Student = null;
 
@@ -105,6 +105,73 @@ namespace OrderBentoSystem.Services
                 data.Add(item.S_Name);
             }
             return data;
+        }
+
+        /// <summary>
+        /// 輸出學生
+        /// </summary>
+        /// <param name="stdCode">學號</param>
+        /// <param name="classCode">班級</param>
+        /// <returns></returns>
+        public List<string> OutPutStudent(string stdCode, string classCode)
+        {
+            List<string> data = new List<string>();
+            // 如果有傳入學號與班級就去找該學生資料
+            if(stdCode != "" && classCode != "")
+            {
+                FilterListStd = List_Student.Where(std => std.C_Code == classCode
+                                         && std.S_Code == stdCode).ToList();
+            }
+            else
+            {
+                // 如果都沒有資料查詢所有班級的學生
+                FilterListStd = List_Student.Where(std => std.C_Code == Select_Class.C_Code).ToList();
+            }            
+            foreach (var item in FilterListStd)
+            {
+                data.Add(item.S_Name);
+            }
+            return data;
+        }
+
+        // 取得單一筆學生資料
+        public Proc_GetStudent_Result GetOneStdData()
+        {
+            Proc_GetStudent_Result model = new Proc_GetStudent_Result();
+            model = List_Student.Where(s => s.C_Code == Select_Class.C_Code
+                                    && s.S_Code == Select_Student.S_Code).FirstOrDefault();
+            return model;
+        }
+
+        /// <summary>
+        /// 修改學生基本資料
+        /// </summary>
+        /// <param name="Addr">地址</param>
+        /// <param name="Email"></param>
+        /// <param name="Phone">電話</param>
+        /// <param name="Password">密碼</param>
+        /// <returns></returns>
+        public rMessage UpdateStdInfo(string Addr, string Email, string Phone, string Password)
+        {
+            rMessage msgInfo = new rMessage();
+            try
+            {
+                var stdData = context.StudentInfo.Where(s => s.S_Code == Select_Student.S_Code).First();
+                stdData.Addr = Addr;
+                stdData.Email = Email;
+                stdData.Phone = Phone;
+                stdData.Pword = Password;
+                context.SaveChanges();
+
+                msgInfo.isSuccess = true;
+                msgInfo.msg = "已成功修改資料!";
+            }
+            catch (Exception)
+            {
+                msgInfo.isSuccess = false;
+                msgInfo.msg = "修改資料時發生錯誤!";
+            }        
+            return msgInfo;
         }
     }
 }

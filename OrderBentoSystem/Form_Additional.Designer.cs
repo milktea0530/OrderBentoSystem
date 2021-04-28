@@ -32,15 +32,15 @@ namespace OrderBentoSystem
             this.label1 = new System.Windows.Forms.Label();
             this.lBox_Additional = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_CreateSave = new System.Windows.Forms.Button();
+            this.btn_Create = new System.Windows.Forms.Button();
+            this.txt_Price = new System.Windows.Forms.TextBox();
+            this.txt_Name = new System.Windows.Forms.TextBox();
+            this.txt_Code = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_Login = new System.Windows.Forms.Button();
+            this.btn_Update = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,11 +63,12 @@ namespace OrderBentoSystem
             this.lBox_Additional.Name = "lBox_Additional";
             this.lBox_Additional.Size = new System.Drawing.Size(320, 312);
             this.lBox_Additional.TabIndex = 15;
+            this.lBox_Additional.SelectedIndexChanged += new System.EventHandler(this.lBox_Additional_SelectedIndexChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btn_CreateSave);
+            this.groupBox1.Controls.Add(this.btn_Create);
             this.groupBox1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox1.Location = new System.Drawing.Point(692, 110);
             this.groupBox1.Name = "groupBox1";
@@ -76,49 +77,52 @@ namespace OrderBentoSystem
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "新增加購項目";
             // 
-            // button2
+            // btn_CreateSave
             // 
-            this.button2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(49, 194);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 59);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "儲存資料";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_CreateSave.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_CreateSave.Location = new System.Drawing.Point(49, 194);
+            this.btn_CreateSave.Name = "btn_CreateSave";
+            this.btn_CreateSave.Size = new System.Drawing.Size(139, 59);
+            this.btn_CreateSave.TabIndex = 18;
+            this.btn_CreateSave.Text = "儲存資料";
+            this.btn_CreateSave.UseVisualStyleBackColor = true;
+            this.btn_CreateSave.Click += new System.EventHandler(this.btn_CreateSave_Click);
             // 
-            // button1
+            // btn_Create
             // 
-            this.button1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(49, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 59);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "新增資料";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Create.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_Create.Location = new System.Drawing.Point(49, 78);
+            this.btn_Create.Name = "btn_Create";
+            this.btn_Create.Size = new System.Drawing.Size(139, 59);
+            this.btn_Create.TabIndex = 17;
+            this.btn_Create.Text = "新增資料";
+            this.btn_Create.UseVisualStyleBackColor = true;
+            this.btn_Create.Click += new System.EventHandler(this.btn_Create_Click);
             // 
-            // textBox3
+            // txt_Price
             // 
-            this.textBox3.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox3.Location = new System.Drawing.Point(454, 263);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 41);
-            this.textBox3.TabIndex = 34;
+            this.txt_Price.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_Price.Location = new System.Drawing.Point(454, 263);
+            this.txt_Price.Name = "txt_Price";
+            this.txt_Price.Size = new System.Drawing.Size(200, 41);
+            this.txt_Price.TabIndex = 34;
             // 
-            // textBox2
+            // txt_Name
             // 
-            this.textBox2.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(454, 188);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 41);
-            this.textBox2.TabIndex = 33;
+            this.txt_Name.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_Name.Location = new System.Drawing.Point(454, 188);
+            this.txt_Name.Name = "txt_Name";
+            this.txt_Name.Size = new System.Drawing.Size(200, 41);
+            this.txt_Name.TabIndex = 33;
             // 
-            // textBox1
+            // txt_Code
             // 
-            this.textBox1.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(454, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 41);
-            this.textBox1.TabIndex = 32;
+            this.txt_Code.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_Code.Location = new System.Drawing.Point(454, 110);
+            this.txt_Code.Name = "txt_Code";
+            this.txt_Code.ReadOnly = true;
+            this.txt_Code.Size = new System.Drawing.Size(200, 41);
+            this.txt_Code.TabIndex = 32;
             // 
             // label4
             // 
@@ -150,25 +154,26 @@ namespace OrderBentoSystem
             this.label2.TabIndex = 29;
             this.label2.Text = "名稱:";
             // 
-            // btn_Login
+            // btn_Update
             // 
-            this.btn_Login.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_Login.Location = new System.Drawing.Point(401, 360);
-            this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(253, 59);
-            this.btn_Login.TabIndex = 35;
-            this.btn_Login.Text = "修改儲存";
-            this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Update.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_Update.Location = new System.Drawing.Point(401, 360);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(253, 59);
+            this.btn_Update.TabIndex = 35;
+            this.btn_Update.Text = "修改儲存";
+            this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // Form_Additional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 450);
-            this.Controls.Add(this.btn_Login);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btn_Update);
+            this.Controls.Add(this.txt_Price);
+            this.Controls.Add(this.txt_Name);
+            this.Controls.Add(this.txt_Code);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -177,6 +182,7 @@ namespace OrderBentoSystem
             this.Controls.Add(this.label1);
             this.Name = "Form_Additional";
             this.Text = "加購項目維護";
+            this.Load += new System.EventHandler(this.Form_Additional_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -188,14 +194,14 @@ namespace OrderBentoSystem
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lBox_Additional;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_CreateSave;
+        private System.Windows.Forms.Button btn_Create;
+        private System.Windows.Forms.TextBox txt_Price;
+        private System.Windows.Forms.TextBox txt_Name;
+        private System.Windows.Forms.TextBox txt_Code;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Button btn_Update;
     }
 }

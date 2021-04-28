@@ -34,14 +34,14 @@ namespace OrderBentoSystem
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btn_Login = new System.Windows.Forms.Button();
+            this.btn_Update = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.txt_Account = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cbb_Class = new System.Windows.Forms.ComboBox();
+            this.cbb_StdCode = new System.Windows.Forms.ComboBox();
+            this.txt_Email = new System.Windows.Forms.TextBox();
+            this.txt_Phone = new System.Windows.Forms.TextBox();
+            this.txt_Address = new System.Windows.Forms.TextBox();
+            this.txt_Password = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -94,15 +94,16 @@ namespace OrderBentoSystem
             this.label5.TabIndex = 9;
             this.label5.Text = "地址:";
             // 
-            // btn_Login
+            // btn_Update
             // 
-            this.btn_Login.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_Login.Location = new System.Drawing.Point(85, 488);
-            this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(270, 59);
-            this.btn_Login.TabIndex = 10;
-            this.btn_Login.Text = "更新資料";
-            this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Update.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_Update.Location = new System.Drawing.Point(120, 490);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(270, 59);
+            this.btn_Update.TabIndex = 10;
+            this.btn_Update.Text = "更新資料";
+            this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // label6
             // 
@@ -114,69 +115,73 @@ namespace OrderBentoSystem
             this.label6.TabIndex = 11;
             this.label6.Text = "密碼:";
             // 
-            // comboBox1
+            // cbb_Class
             // 
-            this.comboBox1.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(120, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 36);
-            this.comboBox1.TabIndex = 12;
+            this.cbb_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_Class.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbb_Class.FormattingEnabled = true;
+            this.cbb_Class.Location = new System.Drawing.Point(120, 43);
+            this.cbb_Class.Name = "cbb_Class";
+            this.cbb_Class.Size = new System.Drawing.Size(200, 36);
+            this.cbb_Class.TabIndex = 12;
+            this.cbb_Class.SelectedIndexChanged += new System.EventHandler(this.cbb_Class_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cbb_StdCode
             // 
-            this.comboBox2.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(120, 118);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 36);
-            this.comboBox2.TabIndex = 13;
+            this.cbb_StdCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_StdCode.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbb_StdCode.FormattingEnabled = true;
+            this.cbb_StdCode.Location = new System.Drawing.Point(120, 118);
+            this.cbb_StdCode.Name = "cbb_StdCode";
+            this.cbb_StdCode.Size = new System.Drawing.Size(200, 36);
+            this.cbb_StdCode.TabIndex = 13;
+            this.cbb_StdCode.SelectedIndexChanged += new System.EventHandler(this.cbb_StdCode_SelectedIndexChanged);
             // 
-            // txt_Account
+            // txt_Email
             // 
-            this.txt_Account.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_Account.Location = new System.Drawing.Point(120, 184);
-            this.txt_Account.Name = "txt_Account";
-            this.txt_Account.Size = new System.Drawing.Size(283, 41);
-            this.txt_Account.TabIndex = 14;
+            this.txt_Email.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_Email.Location = new System.Drawing.Point(120, 185);
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.Size = new System.Drawing.Size(402, 36);
+            this.txt_Email.TabIndex = 14;
             // 
-            // textBox1
+            // txt_Phone
             // 
-            this.textBox1.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(120, 252);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 41);
-            this.textBox1.TabIndex = 15;
+            this.txt_Phone.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_Phone.Location = new System.Drawing.Point(120, 252);
+            this.txt_Phone.Name = "txt_Phone";
+            this.txt_Phone.Size = new System.Drawing.Size(200, 41);
+            this.txt_Phone.TabIndex = 15;
             // 
-            // textBox2
+            // txt_Address
             // 
-            this.textBox2.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(120, 324);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(283, 41);
-            this.textBox2.TabIndex = 16;
+            this.txt_Address.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_Address.Location = new System.Drawing.Point(120, 325);
+            this.txt_Address.Name = "txt_Address";
+            this.txt_Address.Size = new System.Drawing.Size(402, 36);
+            this.txt_Address.TabIndex = 16;
             // 
-            // textBox3
+            // txt_Password
             // 
-            this.textBox3.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox3.Location = new System.Drawing.Point(120, 395);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(283, 41);
-            this.textBox3.TabIndex = 17;
+            this.txt_Password.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_Password.Location = new System.Drawing.Point(120, 395);
+            this.txt_Password.Name = "txt_Password";
+            this.txt_Password.Size = new System.Drawing.Size(283, 41);
+            this.txt_Password.TabIndex = 17;
             // 
             // Form_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 587);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.txt_Account);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(544, 587);
+            this.Controls.Add(this.txt_Password);
+            this.Controls.Add(this.txt_Address);
+            this.Controls.Add(this.txt_Phone);
+            this.Controls.Add(this.txt_Email);
+            this.Controls.Add(this.cbb_StdCode);
+            this.Controls.Add(this.cbb_Class);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btn_Login);
+            this.Controls.Add(this.btn_Update);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -184,6 +189,7 @@ namespace OrderBentoSystem
             this.Controls.Add(this.label1);
             this.Name = "Form_Student";
             this.Text = "學生基本資料";
+            this.Load += new System.EventHandler(this.Form_Student_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,13 +202,13 @@ namespace OrderBentoSystem
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Button btn_Update;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox txt_Account;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox cbb_Class;
+        private System.Windows.Forms.ComboBox cbb_StdCode;
+        private System.Windows.Forms.TextBox txt_Email;
+        private System.Windows.Forms.TextBox txt_Phone;
+        private System.Windows.Forms.TextBox txt_Address;
+        private System.Windows.Forms.TextBox txt_Password;
     }
 }

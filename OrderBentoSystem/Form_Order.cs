@@ -50,9 +50,19 @@ namespace OrderBentoSystem
             {
                 lBox_Menu.Items.Add(item);
             }
-            lBox_Menu.SelectedIndex = 0;
-            // 存放目前選取的資料
-            obj_Restaurant.setSelectMenu(lBox_Menu.SelectedIndex);
+            if (lBox_Menu.Items.Count > 0)
+            {
+                lBox_Menu.SelectedIndex = 0;
+                // 存放目前選取的資料
+                obj_Restaurant.setSelectMenu(lBox_Menu.SelectedIndex);
+            }
+            else
+            {
+                // 沒有菜單
+                lBox_Add.Items.Clear();
+                txt_Price.Text = "";
+                txt_Subtotal.Text = "";
+            }
         }
         /// <summary>
         ///  設定加購項目
@@ -151,7 +161,7 @@ namespace OrderBentoSystem
             // 更新目前選取的資料
             obj_Restaurant.setSelectRestaurant(cBox_Restaurant.SelectedIndex);
             // 呼叫更新菜單(先判斷是否有項目)
-            if (lBox_Menu.Items.Count < 1) return;
+            // if (lBox_Menu.Items.Count < 1) return;
             setFoodMenu();
         }
         #endregion
@@ -179,7 +189,7 @@ namespace OrderBentoSystem
         #region 數量TextBox
         private void txt_Quantity_TextChanged(object sender, EventArgs e)
         {
-            if(txt_Quantity.Text.Length >0)
+            if (txt_Quantity.Text.Length > 0 && txt_Price.Text.Length > 0)
             {
                 // 顯示價格
                 setSubTotal();
@@ -200,6 +210,11 @@ namespace OrderBentoSystem
             odInfo.S_Code = s_Student.Select_Student.S_Code;
             odInfo.F_Code = s_Restaurant.Select_Menu.F_Code;
             odInfo.Quantity = Int32.Parse(txt_Quantity.Text);
+            if(odInfo.Quantity > 100)
+            {
+                MessageBox.Show("請輸入正常數量!");
+                return;
+            }
             odInfo.Price = s_Restaurant.Select_Menu.F_Price;
             odInfo.Subtotal = Decimal.Parse(txt_Subtotal.Text);
             // 特別處理-1是無
@@ -210,6 +225,15 @@ namespace OrderBentoSystem
             // 處理新增訂單動作
             var msgInfo = obj_Order.addOrder();
             MessageBox.Show(msgInfo.msg);
+            // 重製數量
+            txt_Quantity.Text = "1";
+            this.setSubTotal();
+            // 設定下一位同學
+            var nowIdx = cBox_Student.SelectedIndex;
+            if(nowIdx < cBox_Student.Items.Count -1)
+            {
+                cBox_Student.SelectedIndex = nowIdx + 1;
+            }
         }
     }
 }

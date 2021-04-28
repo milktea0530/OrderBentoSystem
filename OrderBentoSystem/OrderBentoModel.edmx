@@ -127,6 +127,12 @@
           <Parameter Name="C_Code" Type="varchar" Mode="In" />
           <Parameter Name="S_Code" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Proc_UpdateFood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FoodName" Type="varchar" Mode="In" />
+          <Parameter Name="FoodPrice" Type="decimal" Mode="In" />
+          <Parameter Name="Add_Code" Type="varchar" Mode="In" />
+          <Parameter Name="FoodCode" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="OrderBentoSystemModelStoreContainer">
           <EntitySet Name="Additional" EntityType="Self.Additional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClassInfo" EntityType="Self.ClassInfo" Schema="dbo" store:Type="Tables" />
@@ -157,15 +163,28 @@
             <Parameter Name="S_Code" Mode="In" Type="String" />
             <Parameter Name="OnDutyDate" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Proc_GetRestaurant" ReturnType="Collection(OrderBentoSystemModel.Proc_GetRestaurant_Result)">
-          <Parameter Name="R_Code" Mode="In" Type="String" />
+          <FunctionImport Name="Proc_GetOrder" ReturnType="Collection(OrderBentoSystemModel.Proc_GetOrder_Result)">
+          <Parameter Name="O_Number" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_GetODStatistics" ReturnType="Collection(OrderBentoSystemModel.Proc_GetODStatistics_Result)">
+          <Parameter Name="O_Number" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_GetOrderDetail" ReturnType="Collection(OrderBentoSystemModel.Proc_GetOrderDetail_Result)">
+            <Parameter Name="O_Number" Mode="In" Type="String" />
+            <Parameter Name="Res_Code" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_GetStudent" ReturnType="Collection(OrderBentoSystemModel.Proc_GetStudent_Result)">
             <Parameter Name="C_Code" Mode="In" Type="String" />
             <Parameter Name="S_Code" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Proc_GetOrder" ReturnType="Collection(OrderBentoSystemModel.Proc_GetOrder_Result)">
-          <Parameter Name="O_Number" Mode="In" Type="String" />
+          <FunctionImport Name="Proc_GetRestaurant" ReturnType="Collection(OrderBentoSystemModel.Proc_GetRestaurant_Result)">
+          <Parameter Name="R_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_UpdateFood">
+            <Parameter Name="FoodName" Mode="In" Type="String" />
+            <Parameter Name="FoodPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="Add_Code" Mode="In" Type="String" />
+            <Parameter Name="FoodCode" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Additional" EntityType="OrderBentoSystemModel.Additional" />
           <EntitySet Name="ClassInfo" EntityType="OrderBentoSystemModel.ClassInfo" />
@@ -176,13 +195,6 @@
           <EntitySet Name="Restaurant" EntityType="OrderBentoSystemModel.Restaurant" />
           <EntitySet Name="StudentInfo" EntityType="OrderBentoSystemModel.StudentInfo" />
           <EntitySet Name="Sys_Account" EntityType="OrderBentoSystemModel.Sys_Account" />
-          <FunctionImport Name="Proc_GetODStatistics" ReturnType="Collection(OrderBentoSystemModel.Proc_GetODStatistics_Result)">
-            <Parameter Name="O_Number" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_GetOrderDetail" ReturnType="Collection(OrderBentoSystemModel.Proc_GetOrderDetail_Result)">
-            <Parameter Name="O_Number" Mode="In" Type="String" />
-            <Parameter Name="Res_Code" Mode="In" Type="String" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Proc_GetAdditional_Result">
           <Property Type="String" Name="Add_Code" Nullable="false" MaxLength="5" />
@@ -209,19 +221,6 @@
           <Property Type="String" Name="C_Code" Nullable="true" MaxLength="5" />
           <Property Type="String" Name="C_Name" Nullable="true" MaxLength="10" />
         </ComplexType>
-        <ComplexType Name="Proc_GetRestaurant_Result">
-          <Property Type="String" Name="Res_Code" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="Res_Name" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetStudent_Result">
-          <Property Type="String" Name="S_Code" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="S_Name" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="C_Code" Nullable="true" MaxLength="5" />
-          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
-          <Property Type="String" Name="Addr" Nullable="true" MaxLength="30" />
-        </ComplexType>
         <ComplexType Name="Proc_GetOrder_Result">
           <Property Type="String" Name="O_Number" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="C_Code" Nullable="true" MaxLength="5" />
@@ -231,6 +230,47 @@
           <Property Type="DateTime" Name="O_Date" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="Amount" Nullable="true" Precision="6" Scale="2" />
           <Property Type="Byte" Name="IsFinish" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetODStatistics_Result">
+          <Property Type="String" Name="F_Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="F_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Add_Code" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Add_Name" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="Res_Name" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetOrderDetail_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="O_Number" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="S_Code" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="S_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="F_Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="F_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Res_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Res_Name" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="String" Name="Add_Code" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Add_Name" Nullable="false" MaxLength="10" />
+          <Property Type="Byte" Name="AlreadyPaid" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetStudent_Result">
+          <Property Type="String" Name="S_Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="S_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="C_Code" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Addr" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Pword" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetRestaurant_Result">
+          <Property Type="String" Name="Res_Code" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="Res_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Tel" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Addr" Nullable="true" MaxLength="30" />
         </ComplexType>
         <EntityType Name="Additional">
           <Key>
@@ -323,31 +363,6 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
-        <ComplexType Name="Proc_GetODStatistics_Result">
-          <Property Type="String" Name="F_Code" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="F_Name" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Add_Code" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Add_Name" Nullable="false" MaxLength="10" />
-          <Property Type="Int32" Name="Quantity" Nullable="true" />
-          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="Res_Name" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetOrderDetail_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="O_Number" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="S_Code" Nullable="false" MaxLength="5" />
-          <Property Type="String" Name="S_Name" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="F_Code" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="F_Name" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Res_Code" Nullable="true" MaxLength="5" />
-          <Property Type="String" Name="Res_Name" Nullable="true" MaxLength="30" />
-          <Property Type="Int32" Name="Quantity" Nullable="true" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="6" Scale="2" />
-          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="6" Scale="2" />
-          <Property Type="String" Name="Add_Code" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Add_Name" Nullable="false" MaxLength="10" />
-          <Property Type="Byte" Name="AlreadyPaid" Nullable="true" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -395,27 +410,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetRestaurant" FunctionName="OrderBentoSystemModel.Store.Proc_GetRestaurant">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetRestaurant_Result">
-                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
-                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetStudent" FunctionName="OrderBentoSystemModel.Store.Proc_GetStudent">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetStudent_Result">
-                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
-                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
-                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
-                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Addr" ColumnName="Addr" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Proc_GetOrder" FunctionName="OrderBentoSystemModel.Store.Proc_GetOrder">
             <ResultMapping>
               <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetOrder_Result">
@@ -430,6 +424,64 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetODStatistics" FunctionName="OrderBentoSystemModel.Store.Proc_GetODStatistics">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetODStatistics_Result">
+                <ScalarProperty Name="F_Code" ColumnName="F_Code" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
+                <ScalarProperty Name="Add_Name" ColumnName="Add_Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetOrderDetail" FunctionName="OrderBentoSystemModel.Store.Proc_GetOrderDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetOrderDetail_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="O_Number" ColumnName="O_Number" />
+                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
+                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+                <ScalarProperty Name="F_Code" ColumnName="F_Code" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
+                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
+                <ScalarProperty Name="Add_Name" ColumnName="Add_Name" />
+                <ScalarProperty Name="AlreadyPaid" ColumnName="AlreadyPaid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetStudent" FunctionName="OrderBentoSystemModel.Store.Proc_GetStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetStudent_Result">
+                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
+                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+                <ScalarProperty Name="C_Code" ColumnName="C_Code" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="Pword" ColumnName="Pword" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetRestaurant" FunctionName="OrderBentoSystemModel.Store.Proc_GetRestaurant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetRestaurant_Result">
+                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
+                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_UpdateFood" FunctionName="OrderBentoSystemModel.Store.Proc_UpdateFood" />
           <EntitySetMapping Name="Additional">
             <EntityTypeMapping TypeName="OrderBentoSystemModel.Additional">
               <MappingFragment StoreEntitySet="Additional">
@@ -527,39 +579,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetODStatistics" FunctionName="OrderBentoSystemModel.Store.Proc_GetODStatistics">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetODStatistics_Result">
-                <ScalarProperty Name="F_Code" ColumnName="F_Code" />
-                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
-                <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
-                <ScalarProperty Name="Add_Name" ColumnName="Add_Name" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
-                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetOrderDetail" FunctionName="OrderBentoSystemModel.Store.Proc_GetOrderDetail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OrderBentoSystemModel.Proc_GetOrderDetail_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="O_Number" ColumnName="O_Number" />
-                <ScalarProperty Name="S_Code" ColumnName="S_Code" />
-                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
-                <ScalarProperty Name="F_Code" ColumnName="F_Code" />
-                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
-                <ScalarProperty Name="Res_Code" ColumnName="Res_Code" />
-                <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
-                <ScalarProperty Name="Add_Code" ColumnName="Add_Code" />
-                <ScalarProperty Name="Add_Name" ColumnName="Add_Name" />
-                <ScalarProperty Name="AlreadyPaid" ColumnName="AlreadyPaid" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

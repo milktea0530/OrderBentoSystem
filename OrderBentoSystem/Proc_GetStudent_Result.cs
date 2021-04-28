@@ -20,5 +20,6 @@ namespace OrderBentoSystem
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Addr { get; set; }
+        public string Pword { get; set; }
     }
 }

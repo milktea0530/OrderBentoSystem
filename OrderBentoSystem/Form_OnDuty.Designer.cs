@@ -29,7 +29,6 @@ namespace OrderBentoSystem
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.lBox_OnDuty = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,17 +36,8 @@ namespace OrderBentoSystem
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.btn_Login = new System.Windows.Forms.Button();
+            this.Dtp_值日 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(130, 41);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2021, 4, 19, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 29);
-            this.dateTimePicker1.TabIndex = 1;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 4, 19, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -68,6 +58,7 @@ namespace OrderBentoSystem
             this.lBox_OnDuty.Name = "lBox_OnDuty";
             this.lBox_OnDuty.Size = new System.Drawing.Size(309, 228);
             this.lBox_OnDuty.TabIndex = 6;
+            this.lBox_OnDuty.SelectedIndexChanged += new System.EventHandler(this.lBox_OnDuty_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -91,6 +82,7 @@ namespace OrderBentoSystem
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("標楷體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(477, 107);
@@ -117,11 +109,19 @@ namespace OrderBentoSystem
             this.btn_Login.Text = "更新資料";
             this.btn_Login.UseVisualStyleBackColor = true;
             // 
+            // Dtp_值日
+            // 
+            this.Dtp_值日.Location = new System.Drawing.Point(107, 39);
+            this.Dtp_值日.Name = "Dtp_值日";
+            this.Dtp_值日.Size = new System.Drawing.Size(200, 29);
+            this.Dtp_值日.TabIndex = 16;
+            // 
             // Form_OnDuty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 372);
+            this.Controls.Add(this.Dtp_值日);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -129,17 +129,15 @@ namespace OrderBentoSystem
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lBox_OnDuty);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker1);
             this.Name = "Form_OnDuty";
             this.Text = "修改值日生";
+            this.Load += new System.EventHandler(this.Form_OnDuty_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lBox_OnDuty;
         private System.Windows.Forms.Label label2;
@@ -147,5 +145,6 @@ namespace OrderBentoSystem
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.DateTimePicker Dtp_值日;
     }
 }

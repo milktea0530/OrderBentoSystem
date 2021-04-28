@@ -118,6 +118,7 @@ namespace OrderBentoSystem
             this.btn_OrderSave.TabIndex = 67;
             this.btn_OrderSave.Text = "訂購單\r\n存檔";
             this.btn_OrderSave.UseVisualStyleBackColor = true;
+            this.btn_OrderSave.Click += new System.EventHandler(this.btn_OrderSave_Click);
             // 
             // label7
             // 
@@ -199,6 +200,7 @@ namespace OrderBentoSystem
             // 
             // cBox_Class
             // 
+            this.cBox_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBox_Class.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cBox_Class.FormattingEnabled = true;
             this.cBox_Class.Location = new System.Drawing.Point(111, 22);

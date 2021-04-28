@@ -172,5 +172,10 @@ namespace OrderBentoSystem
                 OrderFun();
             }
         }
+
+        private void btn_OrderSave_Click(object sender, EventArgs e)
+        {
+            obj_Order.OrderSave();
+        }
     }
 }

@@ -12,8 +12,8 @@ namespace OrderBentoSystem.Services
     public class s_OnDuty : Entities
     {
         #region 存放值日生的欄位與屬性
-        private ObjectResult<Proc_GetOnDuty_Result> List_OnDuty = null;
-        public ObjectResult<Proc_GetOnDuty_Result> list_Onduty
+        private List<Proc_GetOnDuty_Result> List_OnDuty = null;
+        public List<Proc_GetOnDuty_Result> list_Onduty
         {
             get => this.List_OnDuty;
             set => this.List_OnDuty = value;
@@ -43,7 +43,7 @@ namespace OrderBentoSystem.Services
             string c_Code = G_LogIn.LogInData.c_Code == null ? "" : G_LogIn.LogInData.c_Code;
             try
             {
-                List_OnDuty = context.Proc_GetOnDuty(c_Code, s_Code, onDutyDate);
+                List_OnDuty = context.Proc_GetOnDuty(c_Code, s_Code, onDutyDate).ToList();
                 rMsg.isSuccess = true;
             }
             catch (Exception)
@@ -65,7 +65,7 @@ namespace OrderBentoSystem.Services
             List<string> data = new List<string>();
             foreach (var item in List_OnDuty)
             {
-                data.Add($"{item.C_Name} {item.S_Name}");
+                data.Add($"{item.C_Name} {item.S_Code}{item.S_Name}");
             }
             return data;
         }
@@ -81,6 +81,7 @@ namespace OrderBentoSystem.Services
             // 如果已經有值日生就離開程式
             var isCheck = context.Proc_GetOnDuty("", "", onDutyDate);
             if (isCheck.Count() > 0) return;
+            // 假如是假日也不需要執行
 
             // 取得班級
             var GetClassList = context.ClassInfo.Select(m => m.C_Code).ToList();

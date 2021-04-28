@@ -30,7 +30,6 @@ namespace OrderBentoSystem
         private void InitializeComponent()
         {
             this.btn_MenuWrite = new System.Windows.Forms.Button();
-            this.btn_OpenOrder = new System.Windows.Forms.Button();
             this.btn_AddOrder = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_Subtotal = new System.Windows.Forms.TextBox();
@@ -55,6 +54,7 @@ namespace OrderBentoSystem
             // 
             // btn_MenuWrite
             // 
+            this.btn_MenuWrite.Enabled = false;
             this.btn_MenuWrite.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_MenuWrite.Location = new System.Drawing.Point(668, 21);
             this.btn_MenuWrite.Name = "btn_MenuWrite";
@@ -63,22 +63,12 @@ namespace OrderBentoSystem
             this.btn_MenuWrite.Text = "讀取\r\n品項檔";
             this.btn_MenuWrite.UseVisualStyleBackColor = true;
             // 
-            // btn_OpenOrder
-            // 
-            this.btn_OpenOrder.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_OpenOrder.Location = new System.Drawing.Point(668, 415);
-            this.btn_OpenOrder.Name = "btn_OpenOrder";
-            this.btn_OpenOrder.Size = new System.Drawing.Size(114, 80);
-            this.btn_OpenOrder.TabIndex = 65;
-            this.btn_OpenOrder.Text = "開啟\r\n訂單";
-            this.btn_OpenOrder.UseVisualStyleBackColor = true;
-            // 
             // btn_AddOrder
             // 
             this.btn_AddOrder.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_AddOrder.Location = new System.Drawing.Point(540, 415);
+            this.btn_AddOrder.Location = new System.Drawing.Point(557, 415);
             this.btn_AddOrder.Name = "btn_AddOrder";
-            this.btn_AddOrder.Size = new System.Drawing.Size(114, 80);
+            this.btn_AddOrder.Size = new System.Drawing.Size(225, 80);
             this.btn_AddOrder.TabIndex = 64;
             this.btn_AddOrder.Text = "訂購";
             this.btn_AddOrder.UseVisualStyleBackColor = true;
@@ -100,6 +90,7 @@ namespace OrderBentoSystem
             this.txt_Subtotal.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt_Subtotal.Location = new System.Drawing.Point(632, 355);
             this.txt_Subtotal.Name = "txt_Subtotal";
+            this.txt_Subtotal.ReadOnly = true;
             this.txt_Subtotal.Size = new System.Drawing.Size(150, 36);
             this.txt_Subtotal.TabIndex = 62;
             // 
@@ -109,6 +100,7 @@ namespace OrderBentoSystem
             this.txt_Price.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt_Price.Location = new System.Drawing.Point(632, 288);
             this.txt_Price.Name = "txt_Price";
+            this.txt_Price.ReadOnly = true;
             this.txt_Price.Size = new System.Drawing.Size(150, 36);
             this.txt_Price.TabIndex = 61;
             // 
@@ -184,6 +176,7 @@ namespace OrderBentoSystem
             // 
             // cBox_Restaurant
             // 
+            this.cBox_Restaurant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBox_Restaurant.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cBox_Restaurant.FormattingEnabled = true;
             this.cBox_Restaurant.Location = new System.Drawing.Point(98, 129);
@@ -254,6 +247,7 @@ namespace OrderBentoSystem
             // 
             // cBox_Student
             // 
+            this.cBox_Student.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBox_Student.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cBox_Student.FormattingEnabled = true;
             this.cBox_Student.Location = new System.Drawing.Point(98, 59);
@@ -264,6 +258,7 @@ namespace OrderBentoSystem
             // 
             // cBox_Class
             // 
+            this.cBox_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBox_Class.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cBox_Class.FormattingEnabled = true;
             this.cBox_Class.Location = new System.Drawing.Point(98, 15);
@@ -278,7 +273,6 @@ namespace OrderBentoSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 514);
             this.Controls.Add(this.btn_MenuWrite);
-            this.Controls.Add(this.btn_OpenOrder);
             this.Controls.Add(this.btn_AddOrder);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txt_Subtotal);
@@ -310,7 +304,6 @@ namespace OrderBentoSystem
         #endregion
 
         private System.Windows.Forms.Button btn_MenuWrite;
-        private System.Windows.Forms.Button btn_OpenOrder;
         private System.Windows.Forms.Button btn_AddOrder;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_Subtotal;

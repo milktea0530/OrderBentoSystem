@@ -15,5 +15,7 @@ namespace OrderBentoSystem
     {
         public string Res_Code { get; set; }
         public string Res_Name { get; set; }
+        public string Tel { get; set; }
+        public string Addr { get; set; }
     }
 }
